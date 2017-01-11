@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Scheduling</h3>
+  </div>
+
+  <div class="panel-body">
+    <%= f.fields_for :schedules do |schedules_form| %>
+
+      <div id="<%= 'form_group_' + schedules_form.index.to_s %>" class = "schedule-group row">
+
+      <div id="<%= 'schedule_type_group_' + schedules_form.index.to_s %>" class="form-group col-md-2 schedule-type-group">
+        <%= schedules_form.select(:type, [['Every','IntervalSchedule'],['Daily','DailySchedule'],['Weekly','WeeklySchedule'],['Monthly','MonthlySchedule']], {}, { :class => "form-control schedule-type" }) %>
+      </div>
+
+      <div id="<%= 'param_group_' + schedules_form.index.to_s %>" class="form-group col-md-2 schedule-param-group">
+        <%= schedules_form.text_field :param, :class => "form-control schedule-param" %>
+      </div>
+
+      <div id="<%= 'time_group_' + schedules_form.index.to_s %>" class="form-group col-md-2 schedule-time-group">
+        <div class='input-group date schedule-date-picker'>
+        <%= schedules_form.text_field :time, :class => "form-control schedule-time" %>
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-time"></span>
+        </span>
+        </div>
+      </div>
+
+       <div id="<%= 'time_zone_group_' + schedules_form.index.to_s %>" class="form-group col-md-2 schedule-time-zone-group">
+        <%= schedules_form.select(:time_zone, [['Pacific', 'Pacific Time (US & Canada)'], ['Mountain', 'Mountain Time (US & Canada)'], ['Central', 'Central Time (US & Canada)'], ['Eastern', 'Eastern Time (US & Canada)'], ['UTC', 'UTC']], {}, { :class => "form-control schedule-time-zone" }) %>
+      </div>
+
+      <div id="<%= 'interval_type_group_' + schedules_form.index.to_s %>" class="form-group col-md-2 schedule-interval-type-group" >
+        <%= select_tag('interval_type_' + schedules_form.index.to_s, options_for_select([['Minutes','1'],['Hours','60'],['Days','1440']]), { :class => "form-control schedule-interval-type" }) %>
+      </div>
+
+      <div class="form-group col-md-2 schedule-spacer schedule-spacer-2" >
+      </div>
+
+      <div class="form-group col-md-3 schedule-spacer schedule-spacer-3" >
+      </div>
+
+
+      <%= schedules_form.hidden_field :_destroy, :class => "destroy" %>
+
+      <div class="form-group col-md-1">
+        <button type="button" class="btn btn-link destroy-button">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      </div>
+
+    <% end %>
+
+    <div class = "add-schedule-group row">
+      <div class="form-group col-md-12 text-center add-button-group">
+        <button type="button" class="btn btn-success add-button">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Schedule
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

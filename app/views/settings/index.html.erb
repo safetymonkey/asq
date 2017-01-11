@@ -1,0 +1,76 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= link_to 'Admin Settings', settings_path %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="container">
+      <%= form_tag("/settings", method: "post", :class => "form-horizontal") do %>
+        <div class="form-group">
+          <%= label_tag(:vip_name, "VIP Address", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= text_field_tag(:vip_name, nil, :class => "form-control", :placeholder => "asq.marchex.com",:disabled => !can?('Set', 'Setting') , :value => Settings.vip_name) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag(:environment, "Environment", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= text_field_tag(:environment, nil, :class => "form-control", :placeholder => "SAD, SOM1, Dev, etc.",:disabled => !can?('Set', 'Setting'), :value => Settings.environment) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag(:result_limit, "Query result limit", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= number_field_tag(:result_limit, nil, :class => "form-control",:disabled => !can?('Set', 'Setting'), :value => Settings.result_limit) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag(:db_statement_timeout, "Query Timeout (Seconds)", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= number_field_tag(:db_statement_timeout, nil,:disabled => !can?('Set', 'Setting'), :class => "form-control, query_timeout", :value => Settings.db_statement_timeout) %>
+          </div>
+        </div>
+
+         <div class="form-group" id="timeout_error" style="display:none">
+            <div class='col-sm-2'></div>
+            <div class="col-sm-5 alert alert-warning" role="alert"></div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag(:tsg_prefix, "TSG link prefix", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= text_field_tag(:tsg_prefix, nil, :class => "form-control",:disabled => !can?('Set', 'Setting'), :value => Settings.tsg_prefix) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag(:dj_workers, "Delayed Job workers", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= number_field_tag(:dj_workers, nil, :class => "form-control", :value => nil, :disabled => true, :placeholder => "Currently Active: #{@delayed_job_worker_count}") %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag(:global_rt_check, "Global RT Check", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <!-- We need to use a hidden field here so we can send a "false" if the box isn't checked. -->
+            <%= hidden_field_tag(:global_rt_check, false) %>
+            <%= check_box_tag(:global_rt_check, true, Settings.global_rt_check == true,:disabled => can?('Set', 'Setting')) %>
+          </div>
+        </div>
+
+        <% if can? :update, User %>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <%= submit_tag("Save Settings", :class => "btn btn-primary") %>
+            </div>
+          </div>
+        <% end %>
+      <% end %> <%# end form_tag %>
+    </div>
+  </div>
+</div>

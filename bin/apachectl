@@ -1,0 +1,4 @@
+#!/bin/sh
+canonicalpath=`readlink -f $0`
+canonicalbasename=`basename $canonicalpath`
+exec /site/marchex/bin/pc `dirname $canonicalpath`/.. $canonicalbasename $@

@@ -1,0 +1,1 @@
+junit_xml_path: <%= File.join(Dir.pwd, 'spec', 'reports') %>

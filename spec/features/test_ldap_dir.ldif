@@ -1,0 +1,45 @@
+version: 1
+
+dn: ou=people,dc=example,dc=org
+objectClass: top
+objectClass: organizationalUnit
+ou: people
+
+dn: uid=aadmin,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Alexandra Admin
+sn: Admin
+givenName: Alexandra
+mail: alexandra@example.org
+uid: aadmin
+# Password is "smada"
+userpassword: {SHA}pGlmZX1VOEdHHb30HZezeVNFxGM=
+
+dn: uid=eeditor,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Erin Editor
+sn: Editor
+givenName: Erin
+mail: erin@example.org
+uid: eeditor
+# Password is "smada"
+userpassword: {SHA}pGlmZX1VOEdHHb30HZezeVNFxGM=
+
+dn: uid=rregular,ou=people,dc=example,dc=org
+objectClass: top
+objectClass: person
+objectClass: organizationalPerson
+objectClass: inetOrgPerson
+cn: Ronnie Regular
+sn: Regular
+givenName: Ronnie
+mail: ronnie@example.org
+uid: rregular
+# Password is "smada"
+userpassword: {SHA}pGlmZX1VOEdHHb30HZezeVNFxGM=

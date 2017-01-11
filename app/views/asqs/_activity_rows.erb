@@ -1,0 +1,4 @@
+<% asq.activities.order('created_at DESC').each do |activity| %>
+  <% rowclass = 'danger' if activity.activity_type == 'error' %>
+  <tr class='<%= rowclass %>' data-id='<% activity.id %>'><td class='log_date'><%= activity.formatted_time %></td><td class='log_detail'><%= activity.detail.html_safe %></td></tr>
+<% end %>

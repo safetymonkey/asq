@@ -1,0 +1,27 @@
+<div class="modal fade" id="keysModal" tabindex="-1" role="dialog" aria-labelledby="keysModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="keysModalLabel">Using SSH Keys With SFTP</h4>
+      </div>
+      <div class="modal-body">
+        <p>If the recipient of the report wants to use paired key encryption, give them this <b>public key</b>:</p>
+         
+        <p><pre>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgYPxogOeoLwBvnNrqlwoqPdPpUUdE5xMV+Xei2NGnv+TqxpM11xey5TwSXJwuW6VGmDBfjqD/N+qcVZrj4gF1Dn2Tv8SFp4edlIfXU3qES3/gHTs8RW8zdSgqCVQwvQutD9eYhN/beY7Gre7f0UxTyN2BoJ86S8M0pHesrjVK78zcs9i/hxYCSxJOFMglQBiiHAk6xEzFtGQvUhsytPbk+L79t4hkZa1SoHPttwDCInNbbwqStTrnX7XvYns5AdDRoxnk0z/WfckGl9ZEDsvRf2zKkQ7vXMEoz3DF/n3+999wk+HKB+P3WVKPwOzmhkaUy2bqmMCFleCe7+uBQP6x asq@blades.sea</pre></p>
+
+        <p>They'll give us a username, or they'll ask us to pick one. In the <b>Direct SFTP Options</b> panel, put in that username, the hostname, and (optionally) the port of the server you want to deliver the report to. No password required.</p> 
+
+        <p>That's all you have to do! ASQ can handle it from there.</p>
+        <hr>
+        <b><u>More Information</u></b>
+        <p>
+        <p>Instead of using the traditional username/password combination, it's also possible to connect using a <b>public/private</b> key pair. 
+
+        <p>For a better explanation, check out this <a href="https://www.youtube.com/watch?v=ZghMPWGXexs&t=303" target="_blank">video.</a></p> 
+        <p>In a broad sense, the destination server is putting a test message in our "mailbox" using our public key. We decrypt that message using our private key, and we tell them what that message was, proving that we are who we say we are. We then do the same thing for them. As part of this back-and-forth, the two parties establish a shared ecryption key that's used during the actual transmission of the report, which keeps it safe from prying eyes.<p>
+        <p>It's a lot of work, but it's a lot better than using a pre-determined shared key (such as a password) and not knowing for sure who has a copy.</p>
+      </div>
+    </div>
+  </div>
+</div>

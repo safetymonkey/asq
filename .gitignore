@@ -1,0 +1,33 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/logs/*
+/tmp
+
+# Ignore reporting files
+/spec/reports/
+/coverage/
+
+# Ignore other unneeded files.
+database.yml.dev
+doc/
+*.swp
+*.iml
+archive/
+*~
+.project
+.ruby-version
+.DS_Store
+.idea
+.secret
+*.iml
+.ruby-version
+/*.sql
+
+/coverage/*

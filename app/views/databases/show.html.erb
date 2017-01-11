@@ -1,0 +1,43 @@
+<h3>
+  <strong>Name:</strong>
+  <%= @database.name %>
+</h3>
+
+<h5>
+  <strong>Hostame:</strong>
+  <%= @database.hostname %>
+</h5>
+
+<h5>
+  <strong>Username:</strong>
+  <%= @database.username %>
+</h5>
+
+<h5>
+  <strong>Password:</strong>
+  <%= if @database.password then "Yup! A password exists. Edit record to see it." end %>
+</h5>
+
+<% if !@database.db_name.nil? && !@database.db_name.empty? %>
+  <h5>
+    <strong>Database name (Postgres-only):</strong>
+    <%= @database.db_name %>
+  </h5>
+<% end %>
+
+<% if !@database.port.nil? %>
+  <h5>
+    <strong>Port:</strong>
+    <%= @database.port %>
+  </h5>
+<% end %>
+
+<h5>
+  <strong>Db type:</strong>
+  <%= @database.db_type %>
+</h5>
+
+<p>
+
+<%= link_to 'Edit', edit_database_path(@database), :class => "btn btn-default" %> |
+<%= link_to 'Back', databases_path, :class => "btn btn-default" %>

@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 data-toggle="collapse" href="#collapseDirectSftp" aria-expanded="<%= !collapse.to_s %>" aria-controls="collapseDirectSftp" role="button" class="panel-title expand-panel-toggle">
+      <% dir = collapse ? 'right' : 'down' %>
+      <i class="indicator glyphicon glyphicon-chevron-<%= dir %>"></i> Direct SFTP Options
+    </h4>
+  </div>
+  <div id="collapseDirectSftp" class="panel-collapse collapse <%= 'in' if !collapse %>">
+    <div class="panel-body">
+      <div class="form-group col-md-12">
+        <%= f.fields_for :direct_sftp_deliveries do |direct_sftp_delivery| %>
+          <div class = "add-file-options-group row">
+
+            <div class="form-group col-md-6">
+              <%= direct_sftp_delivery.label :host, "Host:" %>
+              <%= direct_sftp_delivery.text_field :host, :class => "form-control testable", placeholder: "e.g. sftp.hostname.com" %>
+            </div>
+
+            <div class="form-group col-md-1">
+              <%= direct_sftp_delivery.label :port, "Port:" %>
+              <%= direct_sftp_delivery.text_field :port, :class => "form-control testable", placeholder: "22" %>
+            </div>
+
+            <div class="form-group col-md-5">
+              <%= direct_sftp_delivery.label :host, "Username:" %>
+              <%= direct_sftp_delivery.text_field :username, :class => "form-control testable", placeholder: "" %>
+            </div>
+
+            <div class="form-group col-md-7">
+              <%= direct_sftp_delivery.label :directory, "Directory:" %>
+              <%= direct_sftp_delivery.text_field :directory, :class => "form-control testable", placeholder: "e.g. marchex/files/reports" %>
+            </div>
+
+            <div class="form-group col-md-5">
+              <%= direct_sftp_delivery.label :port, "Password:" %>
+              <%= direct_sftp_delivery.password_field :password, :class => "form-control testable", placeholder: "optional (sometimes)", value: @asq.direct_sftp_deliveries.first.password %><b>A password is optional when using public/private keys.</b>
+               <span class="glyphicon glyphicon-question-sign text-muted" data-toggle="modal" data-target="#keysModal"></span>
+            </div>
+            <div class="form-group col-md-12">
+              <button id="test-sftp-button" type="button" class="btn btn-default">
+                <span class="icon" aria-hidden="true"></span> <span class="text">Test SFTP Connection</span>
+              </button>
+              <span id="test-sftp-results" class="btn btn-success" style="display: none">
+                <span class="icon" aria-hidden="true"></span> <span class="text">Success!</span>
+              </span>
+            </div>
+          </div>
+        <% end %>
+        <%= render 'keys_help_modal' %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+<%# This massive top section is all exlusively for search result pages. Default indexes are much simpler. %>
+<% if params[:search] %>
+  <h3>Searching for: "<%= params[:search] %>"</h3>
+
+  <div class="panel-group" id="accordion">
+
+    <% if !@matched_names.empty? %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title expand-panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseName">
+          <i class="indicator glyphicon glyphicon-chevron-right"></i> Matching titles
+        </h4>
+      </div>
+      <div id="collapseName" class="panel-collapse collapse">
+        <div class="panel-body">
+          <% @matched_names.order(status: :asc, name: :asc).each do |asq| %>
+            <%= render partial: 'asq_panel', locals: { asq: asq, full_details: false } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+    <% if !@matched_tags.empty? %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h4 class="panel-title expand-panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTags">
+          <i class="indicator glyphicon glyphicon-chevron-right"></i> Matching tags
+        </h4>
+      </div>
+      <div id="collapseTags" class="panel-collapse collapse">
+        <div class="panel-body">
+          <% @matched_tags.order(status: :asc, name: :asc).each do |asq| %>
+            <%= render partial: 'asq_panel', locals: { asq: asq, full_details: false } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+
+    <% if !@matched_queries.empty? %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="panel-title expand-panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseQueries">
+              <i class="indicator glyphicon glyphicon-chevron-right"></i> Matching queries
+          </h4>
+        </div>
+        <div id="collapseQueries" class="panel-collapse collapse">
+          <div class="panel-body">
+            <% @matched_queries.order(status: :asc, name: :asc).each do |asq| %>
+              <%= render partial: 'asq_panel', locals: { asq: asq, full_details: false } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
+    <% if !@matched_creator.empty? %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="panel-title expand-panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseCreators">
+            <i class="indicator glyphicon glyphicon-chevron-right"></i> Matching Asq creator
+          </h4>
+        </div>
+        <div id="collapseCreators" class="panel-collapse collapse">
+          <div class="panel-body">
+            <% @matched_creator.order(status: :asc, name: :asc).each do |asq| %>
+              <%= render partial: 'asq_panel', locals: { asq: asq, full_details: false } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
+    <% if !@matched_modifier.empty? %>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h4 class="panel-title expand-panel-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseModifiers">
+            <i class="indicator glyphicon glyphicon-chevron-right"></i> Matching most recent Asq updater
+          </h4>
+        </div>
+        <div id="collapseModifiers" class="panel-collapse collapse">
+          <div class="panel-body">
+            <% @matched_modifier.order(status: :asc, name: :asc).each do |asq| %>
+              <%= render partial: 'asq_panel', locals: { asq: asq, full_details: false } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
+  </div>
+<% else %>
+<%# Everything below is the view for normal asq/tag viewing %>
+
+  <%= will_paginate @asqs, renderer: BootstrapPagination::Rails %>
+
+  <% @asqs.order(status: :asc, name: :asc).each do |asq| %>
+    <%= render partial: 'asq_panel', locals: { asq: asq, full_details: false } %>
+  <% end %>
+  <br>
+  <%= will_paginate @asqs, renderer: BootstrapPagination::Rails %>
+<% end %>

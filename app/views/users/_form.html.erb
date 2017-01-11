@@ -1,0 +1,38 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <% if current_user.is_admin? && @user.login.empty? %>
+    <div class="form-group">
+      <%= f.label :name, 'Username' %><br>
+      <div class="col-md-3">
+        <%= f.text_field :login, :class => "form-control" %>
+      </div>
+    </div>
+  <% else %>
+    <h3>
+        <b>User:</b> <%= @user.name %> (<%= @user.login %>)
+    </h3>
+  <% end %>
+  <br><br>
+  <% if current_user.is_admin %>
+    <div class="form-group">
+      <%= f.check_box :is_admin %> Admin?<br>
+      <%= f.check_box :is_editor %> Editor?
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit 'Update user', :class => "btn btn-primary" %>
+  </div>
+<% end %>

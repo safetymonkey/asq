@@ -1,0 +1,23 @@
+<div class="panel panel-default monitor-options">
+  <div class="panel-heading">
+    <h4 data-toggle="collapse" href="#collapseZenoss" aria-expanded="<%= !collapse.to_s %>" aria-controls="collapseZenoss" role="button" class="panel-title expand-panel-toggle">
+      <% dir = collapse ? 'right' : 'down' %>
+      <i class="indicator glyphicon glyphicon-chevron-<%= dir %>"></i> Zenoss Options
+    </h4>
+  </div>
+  <div id="collapseZenoss" class="panel-collapse collapse <%= 'in' if !collapse %>">
+    <div class="panel-body">
+      <div class="form-group col-md-12">
+        <%= f.fields_for :zenoss_deliveries do |zenoss_delivery| %>
+            <div class = "row">
+              <div class="checkbox">
+                <label>
+                  <%= zenoss_delivery.check_box :enabled %> Enable Zenoss alerts
+                </label>
+              </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+default: &default
+  adapter: postgresql
+  pool: 5
+  timeout: 5000
+
+development:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: asq_development
+  pool: 5
+  username: asq
+  password: password
+
+test:
+  host: localhost
+  adapter: postgresql
+  encoding: unicode
+  database: asq_test
+  pool: 5
+  username: asq
+  password: password
+
+production:
+  url: <%= ENV["DATABASE_URL"] %>
+  host: ##DatabaseHost##
+  adapter: postgresql
+  encoding: unicode
+  database: ##DatabaseName##
+  pool: 5
+  username: ##DatabaseUsername##
+  password: ##DatabasePassword##
+
+rt:
+  host: rtdb-sec.sea.marchex.com
+  adapter: postgresql
+  encoding: unicode
+  database: rt
+  pool: 5
+  username: rt_user
+  password: !!!RT_PASSWORD!!!

@@ -1,0 +1,22 @@
+SPEC_SUITES = [
+    { :id => :integration, :title => 'integration tests', :files => %w(spec/features/*_spec.rb) },
+    { :id => :unit, :title => 'unit test', :dirs => %w(spec) }
+]
+
+namespace :spec do
+  namespace :suite do
+    SPEC_SUITES.each do |suite|
+      desc "Run all specs in #{suite[:title]} spec suite"zz
+      RSpec::Core::RakeTask.new(suite[:id]) do |t|
+        if suite[:files]
+          t.pattern = suite[:files]
+        end
+
+        if suite[:dirs]
+          t.exclude_pattern = 'spec/features/*_spec.rb'
+        end
+
+      end
+    end
+  end
+end

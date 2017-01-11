@@ -1,0 +1,16 @@
+<h1>Release Notes</h1>
+
+<% @notes.each do |note| %>
+  <% if note[:unread] %>
+    <div class="panel panel-primary">
+  <% else %>
+    <div class="panel panel-default">
+  <% end %>
+  <div class="panel-heading">
+    <h2 class="panel-title"><%= note[:date] %>: <%= note[:title] %></h2>
+  </div>
+  <div class="panel-body">
+    <%= note[:html].html_safe %>
+  </div>
+</div>
+<% end %>

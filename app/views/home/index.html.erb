@@ -1,0 +1,13 @@
+<div class="page-header">
+  <h1>Asq</h1>
+</div>
+<% @users.each do |user| %>
+  <p>User: <%=link_to user.name, user %></p>
+<% end %>
+
+<hr>
+
+<% @asqs.each do |asq| %>
+  <p>Asq: <%= link_to asq.name, asq_path(asq) %></p>
+<% end %>
+

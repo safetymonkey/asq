@@ -1,0 +1,33 @@
+<% if can? :update, User %>
+  <%= f.fields_for :json_deliveries do |json| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 data-toggle="collapse" href="#collapseJson" aria-expanded="<%= !collapse.to_s %>" aria-controls="collapseJson" role="button" class="panel-title expand-panel-toggle">
+          <% dir = collapse ? 'right' : 'down' %>
+          <i class="indicator glyphicon glyphicon-chevron-<%= dir %>"></i> JSON Options
+        </h4>
+      </div>
+      <div id="collapseJson" class="panel-collapse collapse <%= 'in' if !collapse %>">
+        <div class="panel-body">
+          <div class="form-group">
+            <div class="form-group col-md-5">
+              <b>When alarm fires, POST results in JSON format to this URL: </b>
+              <%= json.text_field :url, :class => "form-control input-sm json-url" %>
+              <!--<span class="glyphicon glyphicon-question-sign text-muted" data-toggle="modal" data-target="#jsonModal"></span>-->
+              <small>Clear the above field to disable JSON POSTs.</small>
+            </div>
+
+            <div class="form-group col-md-12">
+              <div class="alert alert-danger col-md-12" role="alert" id="json_url_error" style="display:none">That doesn't look like a URL. Be sure to include the complete address (http://).</div>
+            </div>
+
+            <div class="alert alert-danger" role="alert" id="json_url_error" style="display:none">
+              That doesn't look like a URL. Be sure to include the complete address (http://).
+            </div>
+          </div>
+          <%= render 'json_help_modal' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

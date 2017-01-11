@@ -1,0 +1,52 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 data-toggle="collapse" href="#collapseDirectFtp" aria-expanded="<%= !collapse.to_s %>" aria-controls="collapseDirectFtp" role="button" class="panel-title expand-panel-toggle">
+      <% dir = collapse ? 'right' : 'down' %>
+      <i class="indicator glyphicon glyphicon-chevron-<%= dir %>"></i> Direct FTP Options
+    </h4>
+  </div>
+  <div id="collapseDirectFtp" class="panel-collapse collapse <%= 'in' if !collapse %>">
+    <div class="panel-body">
+      <div class="form-group col-md-12">
+        <%= f.fields_for :direct_ftp_deliveries do |direct_ftp_delivery| %>
+          <div class = "add-file-options-group row">
+
+            <div class="form-group col-md-6">
+              <%= direct_ftp_delivery.label :host, "Host:" %>
+              <%= direct_ftp_delivery.text_field :host, :class => "form-control testable", placeholder: "e.g. ftp.hostname.com" %>
+            </div>
+
+            <div class="form-group col-md-1">
+              <%= direct_ftp_delivery.label :port, "Port:" %>
+              <%= direct_ftp_delivery.text_field :port, :class => "form-control testable", placeholder: "21" %>
+            </div>
+
+            <div class="form-group col-md-5">
+              <%= direct_ftp_delivery.label :host, "Username:" %>
+              <%= direct_ftp_delivery.text_field :username, :class => "form-control testable", placeholder: "" %>
+            </div>
+
+            <div class="form-group col-md-7">
+              <%= direct_ftp_delivery.label :directory, "Directory:" %>
+              <%= direct_ftp_delivery.text_field :directory, :class => "form-control testable", placeholder: "e.g. marchex/files/reports" %>
+            </div>
+
+            <div class="form-group col-md-5">
+              <%= direct_ftp_delivery.label :port, "Password:" %>
+              <%= direct_ftp_delivery.password_field :password, :class => "form-control testable", value: @asq.direct_ftp_deliveries.first.password %>
+            </div>
+
+            <div class="form-group col-md-12">
+              <button id="test-ftp-button" type="button" class="btn btn-default">
+                <span class="icon" aria-hidden="true"></span> <span class="text">Test FTP Connection</span>
+              </button>
+              <span id="test-ftp-results" class="btn btn-success" style="display: none">
+                <span class="icon" aria-hidden="true"></span> <span class="text">Success!</span>
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

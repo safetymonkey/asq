@@ -1,0 +1,153 @@
+<div class='panel-container'>
+
+<% if asq.disabled? %>
+<% @panel_type = 'warning' %>
+  <% if asq.monitor? %>
+    <% @panel_prefix = 'DISABLED MONITOR: ' %>
+  <% else %>
+    <% @panel_prefix = 'DISABLED REPORT: ' %>
+  <% end %>
+<% elsif asq.monitor? && asq.in_alert? || asq.operational_error? %>
+  <% @panel_type = 'danger' %>
+  <% @panel_prefix = 'ERROR: ' %>
+<% elsif asq.report? %>
+  <% @panel_type = 'info' %>
+  <% @panel_prefix = '' %>
+<% else %>
+  <% @panel_type = 'default' %>
+  <% @panel_prefix = '' %>
+<% end %>
+
+
+<div class="panel asq-panel panel-<%= @panel_type %>" data-asq_id=<%=asq.id%>>
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= "<b>#{@panel_prefix}</b>".html_safe %>
+      <%= link_to asq.name, asq_path(asq) %>
+      <small> /
+        <b>Tags:</b>
+        <% asq.tag_list.each_with_index do |tag, index| %>
+          <%= link_to tag, tags_path(tag) %><%= unless index == asq.tag_list.size - 1 then ', ' end %>
+        <% end %>
+      </small>
+      <div class="pull-right tooltip-examples">
+        <div class="btn-group">
+          <% if (asq.in_alert? || asq.operational_error? || asq.report?) && !asq.disabled %>
+            <% if asq.result %>
+              <%= link_to '<span class="glyphicon glyphicon-download-alt"></span>'.html_safe, asq_path(asq, format: "csv"), :class => "btn btn-default btn-xs", :title =>"Download results" %>
+            <% else %>
+              <%= link_to '<span class="glyphicon glyphicon-download-alt"></span>'.html_safe, asq_path(asq, format: "csv"), :class => "btn btn-default btn-xs", :title =>"Download results", :disabled => "disabled" %>
+            <% end %>
+          <% end %>
+
+          <!-- SOC TSG Button -->
+          <% unless Settings.tsg_prefix.empty? %>
+            <%= link_to '<span class="glyphicon glyphicon-book"></span>'.html_safe, Settings.tsg_prefix + asq.name, :class => "btn btn-default btn-xs", :title => "SOC TSG", :target => '_blank' %>
+          <% end %>
+
+          <!-- Refresh Button -->
+          <% if asq.disabled %>
+          <% elsif !asq.refresh_in_progress %>
+            <%= link_to "<span class='glyphicon glyphicon-refresh refresh-button'</span>".html_safe, refresh_path(asq), remote: true, :class => "btn btn-default btn-xs test-class", :title => "Refresh Asq"%>
+          <% else %>
+            <!-- We can't put these two If statements in the same line, because it doesn't work for some reason. -->
+            <% if can? :update, User %>
+              <%= link_to '<span class="glyphicon glyphicon-ban-circle"></span>'.html_safe, cancel_refresh_path(asq), :class => "btn btn-default btn-xs", :title =>"Cancel Refresh" %>
+            <% else %>
+              <%= link_to '<span class="glyphicon glyphicon-refresh"></span>'.html_safe, refresh_path(asq), :class => "btn btn-default btn-xs", :title => "Refresh Asq", :disabled => "disabled" %>
+            <% end %>
+          <% end %>
+
+          <!-- Activity Log Button -->
+          <button type="button" class="btn btn-default btn-xs activity-log" data-toggle="modal" title="Activity Log" data-asq="<%= asq.id %>" data-target="#activityModal_<%= asq.id %>"><span class="glyphicon glyphicon-tasks"></button>
+
+          <!-- Edit Asq Button -->
+          <% if can? :update, asq %>
+            <%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe, edit_asq_path(asq), :class => "btn btn-default btn-xs", :title => "Edit Asq" %>
+          <% end %>
+
+        </div>
+      </div>
+      <div class='hidden_last_run', style='display:none'><%="#{asq.last_run}"%></div>
+    </h3>
+  </div>
+  <%= render 'activity_modal', :asq => asq %>
+  <% if full_details || (!asq.disabled && (asq.in_alert? || (asq.report? && asq.result && asq.result != '[]'))) %>
+    <div class='asq-overlay'></div>
+    <%= raw "<div class='panel-body asq-panel-body' data-asq_body=#{asq.id}>" %>
+      <% if asq.description != '' %>
+        <p><b>Description: </b> <%= asq.description %></p>
+      <% end %>
+      <% if asq.in_alert? || asq.operational_error? || ( asq.report? && asq.result? ) %>
+        <b>Result: </b>
+        <%= "No results available." if asq.result == '[]' %>
+        <% if full_details then display_rows = 30 else display_rows = 10 end %>
+        <% if asq.results.is_json? %>
+          <% if JSON.parse(asq.results).length  > display_rows %>
+            <small>(<%= display_rows.to_s %>/<%= JSON.parse(asq.results).length %> results displayed)</small>
+          <% end %>
+        <% end %>
+        <%= tableize(asq.results, display_rows).html_safe %>
+      <% end %>
+
+
+      <% if full_details %>
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Database:</strong> <%= @asq.database.name %><br>
+            <strong>Query:</strong> <%= @asq.query %><br>
+            <% if asq.monitor? %>
+              <strong>Alert condition:</strong> Asq is in alert when the <%= @asq.alert_result_type.gsub!('_', ' ') + ' ' + @asq.alert_operator + ' ' + @asq.alert_value %>.<br>
+            <% end %>
+            <strong>Last query execution time:</strong> <%= color_code_times(@asq.query_run_time).html_safe %>
+          </li>
+          <li class="list-group-item">
+            <strong>Created by:</strong> <%= @asq.created_by %> on <%= @asq.created_on %><br>
+            <strong>Modified by:</strong> <%= @asq.modified_by %> on <%= @asq.modified_on %>
+          </li>
+
+          <li class="list-group-item">
+
+            <strong>Run Type:</strong>
+              <% if @asq.disabled %>
+                Disabled<br>
+              <% elsif @asq.schedules.count > 0 %>
+                Scheduled<br>
+              <% else %>
+                Manual refreshes only<br>
+            <% end %>
+            <strong>Last Run:</strong>
+              <% if @asq.refresh_in_progress %>
+                <span class='last_run_value'> Refreshing Now . . . </span>
+              <% else %>
+                <span class='last_run_value' ><%="#{@asq.last_run}"%></span>
+              <% end %>
+            <% if @asq.disable_auto_refresh && @asq.in_alert? %>
+              <p class="text-danger">
+                <strong>Warning:</strong> Automatic refreshses for this Asq are disabled when in alert. Please refresh manually.
+              </p>
+            <% end %><br>
+          </li>
+        </ul>
+      <% end %>
+      <div class='worp'></div>
+
+    </div>
+
+  <% end %>
+  <% if asq.related_tickets && Settings.global_rt_check == true %>
+    <div class="panel-footer">
+      <small>
+        <% if !asq.related_tickets.is_json? %>
+          <strong>Warning: </strong><%= asq.related_tickets %>
+        <% elsif asq.related_tickets.is_json? %>
+          <strong>Active related tickets: </strong>
+          <% JSON.parse(asq.related_tickets).each_with_index do |ticket,index| %>
+            <%= link_to "RT \##{ticket['id']} (#{ticket['owner']})", "https://rt.marchex.com/Ticket/Display.html?id=#{ticket['id']}", :target => "_blank" %><%= if index < JSON.parse(asq.related_tickets).length - 1 then ', ' end %>
+          <% end %>
+        <% end %>
+      </small>
+    </div>
+  <% end %>
+</div>
+</div>

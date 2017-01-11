@@ -1,0 +1,96 @@
+  <% if @asq.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@asq.errors.count, "error") %> prohibited this asq from being saved:</h2>
+
+      <ul>
+      <% @asq.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">General Information</h3>
+        </div>
+        <div class="panel-body">
+
+          <div class="form-group col-md-12" id="disabled-warning" style="display:none">
+            <div class="alert alert-warning" role="alert">Scheduled query executions for this Asq will not run while disabled.
+            <% if !@details_view %> Please clear disabled checkbox to resume scheduled query execution.<% end %>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <%= f.label :name, :class => "control-label" %><br>
+            <%= f.text_field :name, :class => "form-control", :required => true %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label :database_id %><br>
+            <%= f.collection_select(:database_id, Database.all, :id, :name, {}, { :class => "form-control" }) %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label :description, :class => "control-label" %><br>
+            <%= f.text_area :description, :class => "form-control", :required => false, :rows => '4' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label :tag_list, "Tags (separated by commas)" %><br>
+            <%= f.text_field :tag_list, :class => "form-control" %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= f.label :query_type, "Query Type" %><br>
+            <%= select(:asq, :query_type, Asq.query_types.keys.map {|query_type| [query_type.titleize,query_type]}, {}, { :class => "form-control query-type-menu" }) %>
+          </div>
+          <div class="form-group col-md-12">
+            <%= f.label :query, :class => "control-label" %>
+            <%= f.text_area :query, :class => "form-control query", :rows => "5", :required => true %>
+            <span class="help-block pull-right">
+              <small>
+                (Last query execution time: <%= color_code_times(@asq.query_run_time).html_safe %>)
+              </small>
+            </span>
+          </div>
+            <div class="form-group col-md-12" id="query_error" style="display:none">
+              <div class="alert alert-warning" role="alert"><strong>WARNING:</strong> Whoa there, cowboy. Your query includes one of the following keywords: update, insert , drop, truncate, or delete. You can still save and run the query, but double check to make sure you know what you're doing. (Have you tried a wildcard instead?)
+              </div>
+            </div>
+          <div class="form-group col-md-12">
+            <%= f.check_box :disabled, :class => "disabled-control allow-while-disabled" %> <b>Temporarily disable this monitor</b>
+          </div>
+        </div>
+      </div>
+
+      <%= render partial: 'monitor_options_panel', locals: { f: f } %>
+
+      <%= render partial: 'scheduling_panel', locals: { f: f } %>
+
+      <%# The collapse variable passed in below is checking to see whether or
+        not there's any data to show. If no options are defined, collapse the
+        panel by default. %>
+
+      <%= render partial: 'email_options_panel', locals: { f: f, collapse: @asq.email_deliveries.first.new_record? } %>
+
+      <%= render partial: 'file_options_panel', locals: { f: f, collapse: @asq.file_options.new_record? } %>
+
+      <% if can? :update, User %>
+      <%= render partial: 'json_options_panel', locals: { f: f, collapse: @asq.json_deliveries.first.new_record? } %>
+
+      <%= render partial: 'direct_ftp_options_panel', locals: { f: f, collapse: @asq.direct_ftp_deliveries.first.new_record? } %>
+      <% end %>
+      <%= render partial: 'direct_sftp_options_panel', locals: { f: f, collapse: @asq.direct_sftp_deliveries.first.new_record? } %>
+
+      <%= render partial: 'zenoss_delivery_panel', locals: { f: f, collapse: @asq.zenoss_deliveries.first.new_record? } %>
+
+    <div class="actions">
+      <%= button_tag( :class => "btn btn-primary save allow-while-disabled") do %>
+        <span class="glyphicon glyphicon-save"></span> Save
+      <% end %>
+      <%# f.submit :value => 'Save'.html_safe, :class => "btn btn-primary" %>
+      <% if @asq.id %>
+        <%= link_to '<span class="glyphicon glyphicon-trash"></span> Delete'.html_safe, asq_path(@asq), method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger delete allow-while-disabled", :role => 'button' %>    </div>
+    <% end %>
+    </div>
+  </div>

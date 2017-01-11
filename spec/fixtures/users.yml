@@ -1,0 +1,23 @@
+admin:
+  login: aadmin
+  email: alexandra@example.org
+  firstname: Alexandra
+  lastname: Admin
+  is_admin: true
+  is_editor: true
+
+editor:
+  login: eeditor
+  email: erin@example.org
+  firstname: Erin
+  lastname: Editor
+  is_admin: false
+  is_editor: true
+
+regular:
+  login: rregular
+  email: ronnie@example.org
+  firstname: Ronnie
+  lastname: Regular
+  is_admin: false
+  is_editor: false

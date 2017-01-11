@@ -1,0 +1,65 @@
+
+<div class="panel <%= if @system_in_error then 'panel-danger' else 'panel-default' end %>">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= '<div class="asq-in-error"></div><b>ERROR: </b>'.html_safe if @system_in_error %>
+      <%= link_to 'System Status', status_path %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <p><b>Description: </b> Asq health statistics</p>
+
+    <table class="table table-striped" style="margin-bottom:0px;">
+      <thead>
+        <tr>
+          <th>Measure</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hostname</td>
+          <td>
+            <%= @asq_hostname %>
+          </td>
+        </tr>
+        <tr>
+          <td>Rails Environment</td>
+          <td><%= Rails.env %></td>
+        </tr>
+        <tr>
+          <td>Versions</td>
+          <td>Ruby <%= RUBY_VERSION %>, Rails <%= Rails::VERSION::STRING %></td>
+        </tr>
+        <tr <%= 'class=warning' if @time_since_last_update.to_i > 20 %>>
+          <td>Time since last Asq update</td>
+          <td><%= @time_since_last_update.round(1) %> minutes</td>
+        </tr>
+        <tr>
+          <td>Asqs in error</td>
+          <td><%= Asq
+            # See Asq.rb line 16 for status enums
+            Asq.where('status < 2').count %> out of <%= Asq
+            Asq.count %>
+          </td>
+        </tr>
+        <tr <%= 'class=warning' if @delayed_job_worker_count == 0 %>>
+          <td>Delayed Job workers active</td>
+          <td><%= @delayed_job_worker_count %></td>
+        </tr>
+        <tr>
+          <td>Delayed Job queue size</td>
+          <td><%= @delayed_job_queue_size %></td>
+        </tr>
+        <tr <%= 'class=warning' if !@cron_exists %>>
+          <td>Cron file active on this host?</td>
+          <td><%= @cron_exists.to_s %></td>
+        </tr>
+        <tr <%= 'class=warning' if @last_host_check != "OK" %>>
+          <td>Primary host check status</td>
+          <td><%= @last_host_check %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

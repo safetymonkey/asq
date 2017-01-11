@@ -1,0 +1,37 @@
+## LDAP
+# These parameters are only used if you have re-enabled the
+# DeviseLdapAuthenticatable gem. Implementation of this gem turned out to be a
+# little bit of a pain to figure out so we left our work in the code.
+# You are free to remove it.
+
+## Environment
+
+development:
+  host: localhost
+  port: 3897
+  attribute: uid
+  base: ou=people,dc=example,dc=org
+  admin_user: cn=admin,dc=development,dc=com
+  admin_password: admin_password
+  ssl: false
+  # <<: *AUTHORIZATIONS
+
+test:
+  host: localhost
+  port: 3897
+  attribute: uid
+  base: ou=people,dc=example,dc=org
+  admin_user: cn=admin,dc=test,dc=com
+  admin_password: admin_password
+  ssl: false
+  # <<: *AUTHORIZATIONS
+
+production:
+  host: localhost
+  port: 3897
+  attribute: uid
+  base: ou=people,dc=example,dc=org
+  admin_user: cn=admin,dc=production,dc=com
+  admin_password: admin_password
+  ssl: false
+  # <<: *AUTHORIZATIONS

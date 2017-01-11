@@ -1,0 +1,64 @@
+// Place all the styles related to the asqs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table-result {
+  margin-bottom: 0px;
+}
+
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }
+
+a.btn.btn-danger:visited { color: #ffffff }
+
+.asq-results {overflow: auto;}
+
+.asq-results table tr,
+.asq-results table td {
+  max-width: 100px;
+  overflow:hidden;
+}
+
+div.panel-container {
+  position: relative;
+}
+
+div.panel {
+  position: relative;
+}
+div.asq-panel-body {
+  position: relative;
+}
+
+div.asq-overlay {
+  background:url(hourglass.gif) no-repeat center center;
+  position: absolute;
+  height:100%;
+  width:100%;
+  z-index: 10;
+  display: none;
+}
+
+
+h4.panel-title.expand-panel-toggle { cursor:pointer; }
+
+td.log_date {
+  width: 35%
+}
+
+.activity-modal-body {
+    max-height: calc(100vh - 210px);
+    overflow-y: auto;
+}
+
+/* Browser specific (not valid) styles to make preformatted text wrap */    
+
+pre {
+ white-space: pre-wrap;       /* css-3 */
+ white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+ white-space: -pre-wrap;      /* Opera 4-6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}

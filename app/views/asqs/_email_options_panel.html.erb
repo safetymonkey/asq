@@ -1,0 +1,42 @@
+<%# Please note: There are fields below that reference both email_deliveries AND %>
+<%# the base Asq model. %>
+<%= f.fields_for :email_deliveries do |email| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 data-toggle="collapse" href="#collapseEmail" aria-expanded="<%= !collapse.to_s %>" aria-controls="collapseEmail" role="button" class="panel-title expand-panel-toggle">
+        <% dir = collapse ? 'right' : 'down' %>
+        <i class="indicator glyphicon glyphicon-chevron-<%= dir %>"></i> Email Options
+      </h4>
+    </div>
+    <div id="collapseEmail" class="panel-collapse collapse <%= 'in' if !collapse %>">
+      <div class="panel-body">
+        <div class="form-group">
+          <div class="form-group col-md-6">
+          <%= email.check_box :attach_results, :class => "email-option" %> <b>Attach Asq results to email as CSV </b>
+          </div>
+
+          <div class="email-template-form">
+            <div class="form-group col-md-12">
+              <%= email.label :to, "Email Address(es)" %>
+              <%= email.text_field :to, :class => "form-control email-option email-to" %>
+            </div>
+
+            <div class="form-group col-md-12" id="email_error" style="display:none">
+            <div class="alert alert-warning" role="alert"><strong>Invalid Email Address(es):</strong> No email will be sent without a valid email address. If using multiple email addresses, use commas to separate.</div>
+            </div>
+
+            <div class="form-group col-md-12">
+              <%= email.label :subject, "Custom Email Subject", :class => "control-label" %><br>
+              <%= email.text_field :subject, :class => "form-control email-option", :placeholder => "Default subject used if none provided" %>
+            </div>
+
+            <div class="form-group col-md-12">
+              <%= email.label :body, "Custom Email Body", :class => "control-label" %><br>
+              <%= email.text_area :body, :class => "form-control email-option", :placeholder => "Default body used if none provided", :rows => '4' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

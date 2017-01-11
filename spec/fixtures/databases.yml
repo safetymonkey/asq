@@ -1,0 +1,31 @@
+test_pg:
+  name: test_pg
+  db_type: postgres
+  hostname: localhost
+  username: asq
+  db_name: test_data
+  port: 5432
+
+test_oracle:
+  name: test_oracle
+  db_type: oracle
+  hostname: localhost
+  username: asq
+  db_name: test_data
+  port: 5432
+
+test_mysql:
+  name: test_mysql
+  db_type: mysql
+  hostname: localhost
+  username: asq
+  db_name: test_data
+  port: 5432
+
+live_pg:
+  name: live_pg
+  db_type: postgres
+  hostname: qa-busmonitordb.sea1.marchex.com
+  username: asq
+  db_name: asq
+  port: 5432

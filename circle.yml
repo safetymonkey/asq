@@ -1,0 +1,22 @@
+## Customize dependencies
+dependencies:
+  pre:
+    - sudo apt-get install libaio1
+    # - sudo mkdir /opt
+    - sudo mkdir /opt/oracle
+    - sudo chmod 777 /opt/oracle/
+    - cd /opt/oracle
+    - curl -O https://dl.dropboxusercontent.com/u/3122224/Oracle/instantclient_install.zip
+    - sudo unzip instantclient_install.zip
+    - sudo unzip instantclient-basic-linux.x64-12.1.0.2.0.zip -d /opt/oracle
+    - sudo unzip instantclient-sdk-linux.x64-12.1.0.2.0.zip -d /opt/oracle
+    - sudo unzip instantclient-sqlplus-linux.x64-12.1.0.2.0.zip -d /opt/oracle
+    - cd /opt/oracle/instantclient_12_1 && sudo ln -s libclntsh.so.12.1 libclntsh.so
+    - sudo mkdir /site
+    - sudo chmod 777 /site
+    # - LD_LIBRARY_PATH=/opt/oracle/instantclient_12_1
+    # - export LD_LIBRARY_PATH
+
+machine:
+  environment:
+    LD_LIBRARY_PATH: /opt/oracle/instantclient_12_1

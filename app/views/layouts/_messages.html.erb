@@ -1,0 +1,17 @@
+<% if !@up_to_date.nil? && !@up_to_date && Rails.env != 'development' %>
+  <div class="alert alert-danger">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <b>WARNING!</b><br>
+    No Asqs have been updated in the last 20 minutes. Check to verify that the back-end cron job is running. You can check <%= link_to 'system status here', status_path %> & refresh manually by visiting <%= link_to 'this link', refresh_path %>.
+  </div>
+<% end %>
+
+<%# Rails flash messages styled for Bootstrap 3.0 %>
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name.to_s == 'notice' ? 'success' : 'danger' %>">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= content_tag :div, sanitize(msg), :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,11 @@
+<h1>Editing Asq</h1>
+
+<%= form_for @asq do |f| %>
+  <%= render partial: 'form', locals: { f: f } %>
+<% end %>
+
+<p>Created by <%= @asq.created_by %> on <%= @asq.created_on %>
+<% if @asq.modified_on %>
+  <br>
+  Last edited by <%= @asq.modified_by %> on <%= @asq.modified_on %></p>
+<% end %>

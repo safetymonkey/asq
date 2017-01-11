@@ -1,0 +1,50 @@
+<%= form_for(@database) do |f| %>
+  <% if @database.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@database.errors.count, "error") %> prohibited this database from being saved:</h2>
+
+      <ul>
+      <% @database.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name, :class => "form-control", :required => true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :hostame %><br>
+    <%= f.text_field :hostname, :class => "testable form-control", :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username, :class => "testable form-control", :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password, :class => "testable form-control", :value => @database.password, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label 'Database name (Postgres only)' %><br>
+    <%= f.text_field :db_name, :class => "testable form-control", :required => false %>
+  </div>
+  <div class="field">
+    <%= f.label :port %><br>
+    <%= f.number_field :port, :class => "testable form-control", :required => false %>
+  </div>
+  <div class="field">
+    <%= f.label :db_type %><br>
+    <%= select(:database, :db_type, [['MySQL', 'mysql'], ['PostgreSQL', 'postgres'], ['Oracle', 'oracle']], {}, { :class => "testable form-control" }) %>
+  </div>
+  <div class="actions">
+    <button type="button" class="test-database">Test Database Connection</button>
+    <div id="test-results">No results yet!</div>
+  </div>
+  <div class="actions">
+    <%= f.submit :class => "btn btn-primary" %>
+  </div>
+<% end %>

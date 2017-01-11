@@ -1,0 +1,8 @@
+<% @activities.each do |activity| %>
+  <% rowclass = 'danger' if activity.activity_type == 'error' %>
+  <tr class='<%= rowclass %>' data-id='<%= activity.id %>'><td class='log_date'><%= activity.formatted_time %></td><td class='log_detail'><%= activity.detail.html_safe %>
+  <% if activity.archived_file %>
+    <%= link_to '<span class="glyphicon glyphicon-download-alt"></span>'.html_safe, archived_file_path(activity.archived_file, format: "csv"), :class => "pull-right btn btn-default btn-xs", :title =>"Download results" %>
+  <% end %>
+  </td></tr>
+<% end %>

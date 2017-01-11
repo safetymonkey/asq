@@ -1,0 +1,19 @@
+one:
+  status_enum: 4
+  sort_priority: 1
+
+two:
+  status_enum: 0
+  sort_priority: 2
+
+three:
+  status_enum: 1
+  sort_priority: 3
+
+four:
+  status_enum: 2
+  sort_priority: 4
+
+five:
+  status_enum: 3
+  sort_priority: 5

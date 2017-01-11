@@ -1,0 +1,53 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      <%= link_to 'Zenoss Settings', zenoss_settings_path %>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <div class="container">
+      <%= form_tag("/zenoss_settings", method: "post", :class => "form-horizontal") do %>
+        <div class="form-group">
+          <%= label_tag(:zenoss_enabled, "Enable", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <!--This is because how checkboxes work. zenoss_enabled returns  boolean 'true' or  empty '' not to be confused with blank-->
+            <%= hidden_field_tag(:zenoss_enabled, 'false') %>
+            <% if( Settings.zenoss_enabled )%>
+              <%= check_box_tag(:zenoss_enabled, 'true', true, class: 'checkbox') %>
+            <% else %>
+              <%= check_box_tag(:zenoss_enabled, 'true', false, class: 'checkbox') %>
+            <% end %>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= label_tag(:zenoss_url, "Zenoss Address", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= text_field_tag(:zenoss_url, nil, :class => "form-control",:disabled => !can?('Set', 'Setting'), :placeholder => "http://thisisatest.org", value: Settings.zenoss_url) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag(:zenoss_username, "Zenoss Username", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= text_field_tag(:zenoss_username, nil, :class => "form-control",:disabled => !can?('Set', 'Setting'), :placeholder => "Username", value: Settings.zenoss_username) %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag(:zenoss_password, "Zenoss Password", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= password_field_tag(:zenoss_password, nil, :class => "form-control",:disabled => !can?('Set', 'Setting'), :placeholder => "Password", value: Settings.zenoss_password) %>
+          </div>
+        </div>
+
+          <% if can? :update, User %>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  <%= submit_tag("Save Settings", :class => "btn btn-primary") %>
+                </div>
+              </div>
+          <% end %>
+      <% end %> <%# close form tag %>
+    </div>
+  </div>
+ </div>

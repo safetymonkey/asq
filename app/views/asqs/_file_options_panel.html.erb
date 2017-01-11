@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 data-toggle="collapse" href="#collapseFile" aria-expanded="<%= !collapse.to_s %>" aria-controls="collapseFile" role="button" class="panel-title expand-panel-toggle">
+      <% dir = collapse ? 'right' : 'down' %>
+        <i class="indicator glyphicon glyphicon-chevron-<%= dir %>"></i> Advanced File Options
+    </h4>
+  </div>
+  <div id="collapseFile" class="panel-collapse collapse <%= 'in' if !collapse %>">
+    <div class="panel-body">
+      <%= f.fields_for :file_options do |file_options| %>
+        <div class = "add-file-options-group row">
+          <div class="form-group col-md-6 has-feedback">
+            <%= file_options.label :name, "Custom file name:" %>
+            <span class="glyphicon glyphicon-question-sign text-muted" data-toggle="modal" data-target="#filenameModal"></span>
+            <%= file_options.text_field :name, :class => "form-control filename", :placeholder => 'Defaults to Asq name' %>
+          </div>
+          <div class="form-group col-md-6">
+            <%= file_options.label :sub_character, "If <span style='text-decoration: underline;' data-toggle='tooltip' title=' Invalid characters are dilimeters or line ends in non-quoted values or quote identifiers in quoted values.'>invalid characters</span> are found in values: ".html_safe %>
+            <%= file_options.select(:sub_character, [['Delivery fails',''],['Deliver with invalid characters removed','remove'],['Deliver with invalid characters replaced with underscores','_']], {}, { :class => "form-control" }) %>
+          </div>
+        </div>
+        <div class="alert alert-warning" role="alert" id="filename_error" style="display:none">
+          The following characters will be replaced with an underscore: \ / : < > ? * | "
+        </div>
+        <div class="form-group form-inline">
+          <%= file_options.label :delimiter, "Delimiter:" %>
+          <%= file_options.select(:delimiter, [['Comma',','],['Tab', '\t'],['Pipe','|'],['Semicolon',';']], {}, { :class => "form-control" }) %>
+          <%= file_options.label :quoted_identifier, "Quoted Identifier:" %>
+          <%= file_options.select(:quoted_identifier, [['None',nil],['Double-Quote','"'],['Single-Quote','\'']], {}, { :class => "form-control" }) %>
+          <%= file_options.label :line_end, "End of Line:" %>
+          <%= file_options.select(:line_end, [['\n','\n'],['\r\n','\r\n']], {}, { :class => "form-control" }) %>
+        </div>
+      <% end %>
+    <%= render 'formatting_help_modal' %>
+    </div>
+  </div>
+</div>

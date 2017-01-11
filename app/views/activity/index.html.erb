@@ -1,0 +1,54 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Activity Log
+
+
+
+    <div class="dropdown pull-right">
+    <span class="dropdown-toggle"  id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      Minimum Log Level
+      <span class="caret"></span>
+    </span>
+    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+      <li><a href="?log_level=0">Fatal</a></li>
+      <li><a href="?log_level=1">Error</a></li>
+      <li><a href="?log_level=2">Warn</a></li>
+      <li><a href="?log_level=3">Info</a></li>
+      <li><a href="?log_level=4">Debug</a></li>
+      <li><a href="?log_level=5">Trace</a></li>
+    </ul>
+    </div>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <table class="table" id="system_log">
+      <thead>
+        <tr>
+          <th>
+            Date / Time
+          </th>
+          <th>
+            Type
+          </th>
+          <th>
+            Asq Name
+          </th>
+          <th>
+            Detail
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @activities.order('created_at DESC').each do |activity| %>
+        <tr>
+          <td class='log_date'><%= activity.formatted_time %></td>
+          <td class='log_type'><%= activity.activity_type.upcase %></td>
+          <td class='log_name'><%= link_to activity.actable.name, activity.actable %></td>
+          <td class='log_detail'><%= activity.detail.html_safe %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class='pagination'><%= will_paginate @activities %></div>
+  </div>
+</div>

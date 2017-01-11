@@ -1,0 +1,38 @@
+<h1>Listing databases</h1>
+
+<%= link_to 'New Database', new_database_path, :class => 'btn btn-primary' %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>DB Type</th>
+      <th>Hostname</th>
+      <th>Password</th>
+      <th>DB Name</th>
+      <th>Port</th>
+      <th><!-- Delete & edit buttons --></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @databases.each do |database| %>
+      <tr>
+        <td><%= link_to database.name, database %></td>
+        <td><%= database.db_type %></td>
+        <td><%= database.hostname %></td>
+        <td><%= if database.password then '<span class="glyphicon glyphicon-ok text-success"></span>'.html_safe else '<span class="glyphicon glyphicon-remove text-danger"></span>'.html_safe end %></td>
+        <td><%= database.db_name %></td>
+        <td><%= database.port %></td>
+        <td><%= link_to '<span class="glyphicon glyphicon-pencil"><span>'.html_safe, edit_database_path(database), :class => "btn btn-default btn-xs edit-btn" %>
+        <% if can? :delete, Database %>
+          <%= link_to '<span class="glyphicon glyphicon-trash"><span>'.html_safe, database, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-xs delete-btn" %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Database', new_database_path, :class => 'btn btn-primary' %>

@@ -1,0 +1,33 @@
+<div class="panel panel-default error-condition-panel monitor-options">
+  <div class="panel-heading">
+    <h3 class="panel-title">Monitor Options</h3>
+  </div>
+  <div class="bs-callout">
+  </div>
+  <div class="panel-body">
+    <div class="form-group col-md-4">
+      <%= f.label :alert_result_type, "The monitor is in alert when..." %><br>
+      <%= select(:asq, :alert_result_type, [['Number of rows returned','rows_count'],['Value of the first returned result','result_value']], {}, { :class => "form-control" }) %>
+    </div>
+    <div class="form-group col-md-1">
+      <%= f.label :alert_operator, "Operator" %><br>
+      <%= select(:asq, :alert_operator, [['!=','!='],['==','=='],['<','<'],['<=','<='],['>','>'],['>=','>=']], {}, { :class => "form-control" }) %>
+    </div>
+    <div class="form-group col-md-1">
+      <%= f.label :alert_value, "Result" %><br>
+      <%= f.text_field :alert_value, :class => "form-control" %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.label :disable_auto_refresh, "Continue scheduled refreshes while in alert?" %><br>
+      <%= select(:asq, :disable_auto_refresh, [['No','true'],['Yes','false']], {}, { :class => "form-control" }) %>
+    </div>
+    <div class="form-group">
+      <div class="form-group col-md-6">
+      <%= f.check_box :deliver_on_every_refresh, :class => "email-option" %> <b>Deliver on every refresh, not just when alarm first trips </b>
+      </div>
+      <div class="form-group col-md-6 email-option">
+      <%= f.check_box :deliver_on_all_clear, :class => "email-option" %> <b>Deliver "all clear" message when alarm clears </b>
+      </div>
+    </div>
+  </div>
+</div>

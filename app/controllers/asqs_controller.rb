@@ -79,7 +79,6 @@ class AsqsController < ApplicationController
 
   # GET /asqs/new
   def new
-    puts "Current user: #{current_user.to_s}"
     @title = 'New Asq'
     @asq = Asq.new(created_by: current_user.email, created_on: DateTime.now)
     create_children
@@ -102,7 +101,9 @@ class AsqsController < ApplicationController
   # POST /asqs
   def create
     @asq = Asq.new(params[:asq])
-    @asq.created_by = current_user.uid
+    # TODO: Asq created_by and modified_by should link to a user, not store
+    # their login name as plain text
+    @asq.created_by = current_user.login
     @asq.created_on = DateTime.now
     create_asq
   end

@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+ActionMailer::Base.delivery_method = :test
+
 RSpec.describe AsqMailer do
   let(:email_delivery) { FactoryGirl.create(:email_delivery) }
   let(:asq_with_email_delivery) { email_delivery.asq }

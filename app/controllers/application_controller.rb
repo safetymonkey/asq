@@ -13,14 +13,14 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-  before_filter :display_release_notes
-  before_filter :pass_environment
-  before_filter lambda{
+  before_action :display_release_notes
+  before_action :pass_environment
+  before_action lambda{
     flash.now[:notice] = flash[:notice].html_safe if flash[:html_safe] &&
                                                      flash[:notice]
   }
 
-  before_filter { render text: "Sorry, friendo. ASQ doesn't support Internet Explorer.
+  before_action { render text: "Sorry, friendo. ASQ doesn't support Internet Explorer.
      Please use a different browser." if browser.ie? }
 
   # Prevent CSRF attacks by raising an exception.

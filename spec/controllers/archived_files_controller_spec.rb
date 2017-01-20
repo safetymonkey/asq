@@ -11,12 +11,12 @@ RSpec.describe ArchivedFilesController, type: :controller do
     before(:example) do
       allow(controller).to receive(:send_file)
         .with(file.full_path, send_options) {
-          @controller.render nothing: true
+          @controller.render body: nil
         }
     end
 
     it 'sets @file to correct file' do
-      get :show, id: file.id
+      get :show, params: { id: file.id }
       expect(assigns(:file)).to eq(file)
     end
 
@@ -24,9 +24,9 @@ RSpec.describe ArchivedFilesController, type: :controller do
       # this is how to test that send_file is called with the correct params
       expect(controller).to receive(:send_file)
         .with(file.full_path, send_options) {
-          @controller.render nothing: true
+          @controller.render body: nil
         }
-      get :show, id: file.id
+      get :show, params: { id: file.id }
     end
 
     context 'while file does not exist' do
@@ -35,7 +35,7 @@ RSpec.describe ArchivedFilesController, type: :controller do
       end
       it 'logs error' do
         expect(Rails.logger).to receive(:error)
-        get :show, id: file.id
+        get :show, params: { id: file.id }
       end
     end
   end

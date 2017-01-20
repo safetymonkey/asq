@@ -1,5 +1,5 @@
 class ActivityController < ApplicationController
-  before_filter :authorize!,
+  before_action :authorize!,
                 except: [:show, :index, :ajax, :show_partial]
 
   def index

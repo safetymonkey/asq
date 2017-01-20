@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter do
+  before_action do
     params[:user] &&= user_params
   end
 

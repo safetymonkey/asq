@@ -67,7 +67,7 @@ RSpec.describe SettingsController, type: :controller do
       allow(controller).to receive(:authorize!)
       expect(Settings).to receive(:method_missing).with(:var=, 'random_thing')
         .and_return(10)
-      post :update, var: 'random_thing'
+      post :update, params: { var: 'random_thing' }
     end
 
     it 'redirects to the settings view when complete' do
@@ -81,7 +81,7 @@ RSpec.describe SettingsController, type: :controller do
     it 'gets a setting passed in via URL' do
       allow(Settings).to receive(:method_missing).with(:random_thing)
         .and_return(10)
-      get :single_setting, var: 'random_thing'
+      get :single_setting, params: { var: 'random_thing' }
       expect(response.body).to match '10'
     end
   end

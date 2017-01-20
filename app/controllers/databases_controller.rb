@@ -1,6 +1,6 @@
 class DatabasesController < ApplicationController
   before_action :set_database, only: [:show, :edit, :update, :destroy]
-  before_filter do
+  before_action do
     params[:database] &&= database_params
   end
   load_and_authorize_resource

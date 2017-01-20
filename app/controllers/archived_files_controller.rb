@@ -6,7 +6,7 @@ class ArchivedFilesController < ApplicationController
   rescue StandardError => e
     logger.error 'Unable to render archive file ' \
       "(id: #{params[:id]}: #{e}"
-    render nothing: true
+    render body: nil
   end
 
   private

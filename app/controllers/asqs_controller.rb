@@ -4,9 +4,9 @@
 # form.
 class AsqsController < ApplicationController
   before_action :set_asq, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!,
+  before_action :authenticate_user!,
                 except: [:show, :index, :ajax, :show_partial, :activity_rows]
-  before_filter do
+  before_action do
     params[:asq] &&= all_params
   end
   load_and_authorize_resource

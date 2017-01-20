@@ -13,6 +13,7 @@ Bundler.require(*Rails.groups)
 module AsqApplication
   class Application < Rails::Application
     config.middleware.use ActionDispatch::Flash
+    config.active_record.time_zone_aware_types = [:datetime]
 
     def hostname
       return @hostname unless @hostname.blank?

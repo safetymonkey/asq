@@ -2,19 +2,30 @@ class AsqMailer < ActionMailer::Base
   include Roadie::Rails::Automatic
   default from: "asq-noreply@yourdomain.com"
 
+  def test_email
+    mail to: 'jgrover@marchex.com', subject: 'Testing ActionMailer 5!'
+    mail.deliver
+  end
+
   # send alert email
   def send_alert_email(asq, email_delivery)
     @asq = asq
     @email_delivery = email_delivery
-    @email_delivery.subject = "Your monitor is in alert: #{@asq.name}" if @email_delivery.subject.blank?
-    attach_results
+    pp @email_delivery
+    puts @email_delivery.subject
+    # @email_delivery.subject = "Your monitor is in alert: #{@asq.name}" if @email_delivery.subject.blank?
+
+    # attach_results
+
     # attach_logo('alert.png')
-    mail to: @email_delivery.to, subject: @email_delivery.subject
-    mail.deliver
+    # mail to: @email_delivery.to, subject: @email_delivery.subject
+    # mail to: 'jgrover@marchex.com', subject: 'Testing ActionMailer 5!'
+    # mail.deliver
   end
 
   # send alert cleared email (no custom option)
   def send_alert_cleared_email(asq, email_delivery)
+    # FIXFIX remove these dumb raises and puts
     @asq = asq
     @email_delivery = email_delivery
     @subject = "Your monitor has cleared: #{@asq.name}"

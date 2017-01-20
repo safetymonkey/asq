@@ -28,6 +28,6 @@ class SettingsController < ApplicationController
   # GET /settings/:var
   def single_setting
     # Pass in a single setting name, get that setting value back in raw text.
-    render text: Settings.send(params['var'])
+    render plain: Settings.send(params['var'])
   end
 end

@@ -1,4 +1,4 @@
-Asq 1.0
+# Asq [![CircleCI][build-badge]][build]
 =========
 
 This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
@@ -139,3 +139,6 @@ License
 --
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+[build-badge]: https://circleci.com/gh/safetymonkey/asq.svg?style=shield&circle-token=c31d4d2749473c316cd4fc5d6160be680a1dc9be
+[build]: https://circleci.com/gh/safetymonkey/asq

@@ -19,6 +19,13 @@
 require 'capybara/rspec'
 require 'simplecov'
 require 'simplecov-rcov'
+
+# save to CircleCI's artifacts directory if we're on CircleCI
+if ENV['CIRCLE_ARTIFACTS']
+  dir = File.join(ENV['CIRCLE_ARTIFACTS'], "coverage")
+  SimpleCov.coverage_dir(dir)
+end
+
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start 'rails'
 

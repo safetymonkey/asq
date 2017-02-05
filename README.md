@@ -2,6 +2,7 @@
 =========
 
 [![CircleCI][build-badge]][build]
+[![Codecov][codecov-badge][codecov]
 [![License][license-badge]][license]
 
 Asq is a tool for the automated retrieval and delivery of datasets obtained via SQL query.
@@ -88,3 +89,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 [license-badge]: https://img.shields.io/badge/license-MIT-green.svg?style=flat
 [license]: https://github.com/fastlane/fastlane/blob/master/LICENSE
+
+[codecov-badge]:https://codecov.io/gh/safetymonkey/asq/branch/master/graph/badge.svg?token=gZGSAnU9hS
+[codecov]: https://codecov.io/gh/safetymonkey/asq

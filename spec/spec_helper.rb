@@ -17,6 +17,7 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 require 'capybara/rspec'
+require 'codecov'
 require 'simplecov'
 require 'simplecov-rcov'
 
@@ -28,6 +29,7 @@ end
 
 SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start 'rails'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

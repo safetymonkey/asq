@@ -67,6 +67,7 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'codecov', require: false
   gem 'database_cleaner'
   gem 'jasmine_junitxml_formatter'
   gem 'ladle'

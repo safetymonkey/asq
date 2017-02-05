@@ -6,10 +6,12 @@ RSpec.describe EmailDelivery, type: :model do
 
   before :each do
     email_delivery
+    @mock_mail = double
+    allow(@mock_mail).to receive(:deliver_now)
   end
 
   it 'calls AsqMailer\'s report method when parent query_type is report' do
-    expect(AsqMailer).to receive(:send_report_email)
+    expect(AsqMailer).to receive(:send_report_email).and_return @mock_mail
     email_delivery.deliver
   end
 
@@ -18,7 +20,7 @@ RSpec.describe EmailDelivery, type: :model do
     email_delivery.asq.query_type = 'monitor'
     email_delivery.asq.status = 'alert_new'
 
-    expect(AsqMailer).to receive(:send_alert_email)
+    expect(AsqMailer).to receive(:send_alert_email).and_return @mock_mail
     email_delivery.deliver
   end
 
@@ -28,7 +30,7 @@ RSpec.describe EmailDelivery, type: :model do
     email_delivery.asq.status = 'clear_new'
     email_delivery.asq.deliver_on_all_clear = true
 
-    expect(AsqMailer).to receive(:send_alert_cleared_email)
+    expect(AsqMailer).to receive(:send_alert_cleared_email).and_return @mock_mail
     email_delivery.deliver
   end
 

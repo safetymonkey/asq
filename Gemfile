@@ -10,6 +10,7 @@ gem 'bootstrap-sass', '3.3.7'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'browser'
 gem 'cancancan', '1.15.0' # Changed this from cancan, may need to roll back
+gem 'coffee-rails', '4.2.1'
 gem 'crypt_keeper', github: 'jmazzi/crypt_keeper'
 gem 'daemons'
 gem 'delayed_job_active_record', '4.1.1'

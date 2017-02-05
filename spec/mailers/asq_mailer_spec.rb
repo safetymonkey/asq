@@ -7,27 +7,30 @@ RSpec.describe AsqMailer do
   let(:asq_with_email_delivery) { email_delivery.asq }
 
   it 'sends alert email' do
-    expect { AsqMailer.send_alert_email(asq_with_email_delivery, email_delivery) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    mail = AsqMailer.send_alert_email(asq_with_email_delivery, email_delivery)
+    expect { mail.deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'sends alert cleared email' do
-    expect { AsqMailer.send_alert_cleared_email(asq_with_email_delivery, email_delivery) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    mail = AsqMailer.send_alert_cleared_email(asq_with_email_delivery, email_delivery)
+    expect { mail.deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'sends report email' do
-    expect { AsqMailer.send_report_email(asq_with_email_delivery, email_delivery) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    mail = AsqMailer.send_report_email(asq_with_email_delivery, email_delivery)
+    expect { mail.deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'sends alert email with blank results' do
     asq = asq_with_email_delivery
     asq.result = ''
-    expect { AsqMailer.send_alert_email(asq, email_delivery) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    expect { AsqMailer.send_alert_email(asq, email_delivery).deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'sends report email with blank results' do
     asq = asq_with_email_delivery
     asq.result = ''
-    expect { AsqMailer.send_report_email(asq, email_delivery) }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    expect { AsqMailer.send_report_email(asq, email_delivery).deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 
   it 'sends attachment for report' do

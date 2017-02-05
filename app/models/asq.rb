@@ -242,12 +242,12 @@ class Asq < ActiveRecord::Base
       result_array_of_hashes[0..Settings.result_limit.to_i]
 
     Delayed::Worker.logger.debug "Processing #{asq.name}"
-    Delayed::Worker.logger.debug "Evaluating if #{asq.alert_result_type}
+    Delayed::Worker.logger.debug "Evaluating if #{asq.alert_result_type} ' \
       #{asq.alert_operator} #{asq.alert_value}"
 
     if asq.alert_result_type == 'rows_count'
-      Delayed::Worker.logger.debug "Row length: #{result_array_of_hashes.length}
-        // Error value: #{asq.alert_value.to_i}"
+      Delayed::Worker.logger.debug "Row length: " \
+        "#{result_array_of_hashes.length} // Error value: #{asq.alert_value.to_i}"
       if result_array_of_hashes.length.send(alert_operator,
                                             asq.alert_value.to_i)
         then asq.alert(result_array_of_hashes.to_json)

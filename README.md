@@ -1,68 +1,10 @@
-# Asq [![CircleCI][build-badge]][build]
+# Asq
 =========
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+[![CircleCI][build-badge]][build]
+[![License][license-badge]][license]
 
-Diagnostics
--
-
-This application was built with recipes that are known to work together.
-
-This application was built with preferences that are NOT known to work
-together.
-
-If the application doesn’t work as expected, please [report an issue](https://github.com/RailsApps/rails_apps_composer/issues)
-and include these diagnostics:
-
-We’d also like to know if you’ve found combinations of recipes or
-preferences that do work together.
-
-Recipes:
-
-* apps4
-* controllers
-* core
-* email
-* extras
-* frontend
-* gems
-* git
-* init
-* models
-* prelaunch
-* railsapps
-* readme
-* routes
-* saas
-* setup
-* testing
-* views
-
-Preferences:
-
-* git: true
-* apps4: rails-devise
-* unit_test: false
-* integration: false
-* fixtures: false
-* authentication: devise
-* authorization: false
-* starter_app: false
-* quiet_assets: true
-* local_env_file: false
-* better_errors: true
-* dev_webserver: webrick
-* prod_webserver: same
-* database: sqlite
-* templates: erb
-* continuous_testing: none
-* frontend: bootstrap3
-* email: none
-* devise_modules: default
-* form_builder: none
-* rvmrc: false
-* jsruntime: false
+Asq is a tool for the automated retrieval and delivery of datasets obtained via SQL query.
 
 Ruby on Rails
 ---
@@ -133,7 +75,8 @@ me and I’ll add a note to the README so that others can find your work.
 Credits
 --
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
+provided by the [RailsApps Project](http://railsapps.github.io/).
 
 License
 --
@@ -142,3 +85,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 [build-badge]: https://circleci.com/gh/safetymonkey/asq.svg?style=shield&circle-token=c31d4d2749473c316cd4fc5d6160be680a1dc9be
 [build]: https://circleci.com/gh/safetymonkey/asq
+
+[license-badge]: https://img.shields.io/badge/license-MIT-green.svg?style=flat
+[license]: https://github.com/fastlane/fastlane/blob/master/LICENSE

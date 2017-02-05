@@ -1,26 +1,16 @@
 class AsqMailer < ActionMailer::Base
   include Roadie::Rails::Automatic
-  default from: "asq-noreply@yourdomain.com"
-
-  def test_email
-    mail to: 'jgrover@marchex.com', subject: 'Testing ActionMailer 5!'
-    mail.deliver
-  end
+  default from: 'asq-noreply@yourdomain.com'
 
   # send alert email
   def send_alert_email(asq, email_delivery)
     @asq = asq
     @email_delivery = email_delivery
-    pp @email_delivery
-    puts @email_delivery.subject
-    # @email_delivery.subject = "Your monitor is in alert: #{@asq.name}" if @email_delivery.subject.blank?
-
-    # attach_results
+    @subject = @email_delivery.subject.blank? ? "Your monitor is in alert: #{@asq.name}" : @email_delivery.subject
+    attach_results
 
     # attach_logo('alert.png')
-    # mail to: @email_delivery.to, subject: @email_delivery.subject
-    # mail to: 'jgrover@marchex.com', subject: 'Testing ActionMailer 5!'
-    # mail.deliver
+    mail to: @email_delivery.to, subject: @subject
   end
 
   # send alert cleared email (no custom option)
@@ -31,7 +21,6 @@ class AsqMailer < ActionMailer::Base
     @subject = "Your monitor has cleared: #{@asq.name}"
     # attach_logo('cleared.png')
     mail to: @email_delivery.to, subject: @subject
-    mail.deliver
   end
 
   # send report email
@@ -42,14 +31,15 @@ class AsqMailer < ActionMailer::Base
       if email_delivery.subject.blank?
     # attach_logo('report.png')
     attach_results
-    mail to: email_delivery.to, subject: @email_delivery.subject
-    mail.deliver
+    mail(to: email_delivery.to, subject: @email_delivery.subject,
+         body: @email_delivery.body)
   end
 
   private
 
   # attaches csv file if flagged for attachment
   def attach_results
+    # if @asq.result && @asq.result.is_json? && @email_delivery.attach_results
     if @asq.result && @asq.result.is_json? && @email_delivery.attach_results
       attachments[@asq.get_processed_filename] = @asq.to_csv
     end

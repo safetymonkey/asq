@@ -1,12 +1,12 @@
 // make all images responsive by default
 img {
-  @extend .img-responsive;
+  // @extend .img-responsive !optional;
   margin: 0 auto;
   }
 
 .field_with_errors {
-  @extend .form-control;
-  @extend .has-error;
+  // @extend .form-control !optional;
+  // @extend .has-error !optional;
 }
 
 
@@ -14,32 +14,32 @@ img {
 // create your own classes
 // to make views framework-neutral
 .column {
-  @extend .col-md-6;
-  @extend .text-center;
+  // @extend .col-md-6;
+  // @extend .text-center;
   }
 .form {
-  @extend .col-md-6;
+  // @extend .col-md-6;
   }
 .form-centered {
-  @extend .col-md-6;
-  @extend .text-center;
+  // @extend .col-md-6;
+  // @extend .text-center;
   }
 .submit {
-  @extend .btn;
-  @extend .btn-primary;
-  @extend .btn-lg;
+  // @extend .btn;
+  // @extend .btn-primary;
+  // @extend .btn-lg;
   }
 // apply styles to HTML elements
 // to make views framework-neutral
 main {
-  @extend .container;
+  // @extend .container;
   // background-color: #eee;
   padding-bottom: 80px;
   width: 100%;
   margin-top: 61px; // accommodate the navbar
   }
 section {
-  @extend .row;
+  // @extend .row;
   margin-top: 20px;
   }
 
@@ -52,29 +52,29 @@ section {
   margin: 0 auto;
 }
 .authform form {
-  @extend .well;
-  @extend .well-lg;
+  // @extend .well;
+  // @extend .well-lg;
   padding-bottom: 40px;
 }
 .authform .right {
   float: right !important;
 }
 .authform .button {
-  @extend .btn;
-  @extend .btn-primary;
+  // @extend .btn;
+  // @extend .btn-primary;
 }
 .authform fieldset {
-  @extend .well;
+  // @extend .well;
 }
 #error_explanation {
-  @extend .alert;
-  @extend .alert-danger;
+  // @extend .alert;
+  // @extend .alert-danger;
 }
 #error_explanation h2 {
   font-size: 16px;
 }
 .button-xs {
-  @extend .btn;
-  @extend .btn-primary;
-  @extend .btn-xs;
+  // @extend .btn;
+  // @extend .btn-primary;
+  // @extend .btn-xs;
 }

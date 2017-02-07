@@ -278,7 +278,6 @@ GEM
       unicode-display_width (~> 1.0, >= 1.0.1)
     rubocop-checkstyle_formatter (0.3.0)
       rubocop (>= 0.30.1)
-    ruby-oci8 (2.2.3)
     ruby-progressbar (1.8.1)
     rubyzip (1.2.0)
     sass (3.4.23)
@@ -394,7 +393,6 @@ DEPENDENCIES
   rspec-rails (~> 3.1)
   rubocop
   rubocop-checkstyle_formatter
-  ruby-oci8 (= 2.2.3)
   sass-rails (= 5.0.6)
   sdoc (= 0.4.0)
   selenium-webdriver
@@ -411,4 +409,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.13.7
+   1.14.3

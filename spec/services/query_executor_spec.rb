@@ -20,6 +20,7 @@ RSpec.describe QueryExecutor do
   end
 
   it "executes Oracle.execute_query() in response to a passed-in MySQL database object"  do
+    pending('requires oci')
     database = instance_double("Database", :db_type => "oracle", :hostname => "fakehost", :username => "fakeuser", :password => "fakepassword",:port => 1521)
     expect(OracleClient).to receive(:execute_query)
     QueryExecutor.execute_query(query_text, database, 10)
@@ -68,6 +69,7 @@ RSpec.describe QueryExecutor do
       QueryExecutor.execute_query('select 1', database, 50000)
     end
     it 'pass result limit to oracle client' do
+      pending('requires oci')
       database = instance_double("Database", :db_type => "oracle", :hostname => "fakehost", :username => "fakeuser", :password => "fakepassword",:port => 1521)
       expect(OracleClient).to receive(:execute_query).with('select 1', database, 50000)
       QueryExecutor.execute_query('select 1', database, 50000)

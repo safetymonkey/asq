@@ -1,4 +1,4 @@
-![ASQ: Automated SQL Queries](app/assets/images/asq-sml.png "Logo Title Text 1")
+![ASQ: Automated SQL Queries][asq-logo]
 ================================================================================
 
 [![CircleCI][build-badge]][build]
@@ -84,10 +84,12 @@ License
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
+[asq-logo]: images/asq-sml.png
+
 [build-badge]: https://circleci.com/gh/safetymonkey/asq.svg?style=shield&circle-token=c31d4d2749473c316cd4fc5d6160be680a1dc9be
 [build]: https://circleci.com/gh/safetymonkey/asq
 
-[license-badge]: https://img.shields.io/badge/license-MIT-green.svg?style=flat
+[license-badge]: images/license-badge.svg
 [license]: https://github.com/fastlane/fastlane/blob/master/LICENSE
 
 [codecov-badge]:https://codecov.io/gh/safetymonkey/asq/branch/master/graph/badge.svg?token=gZGSAnU9hS

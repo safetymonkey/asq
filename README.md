@@ -1,8 +1,8 @@
-# Asq
-=========
+![ASQ: Automated SQL Queries](app/assets/images/asq-sml.png "Logo Title Text 1")
+================================================================================
 
 [![CircleCI][build-badge]][build]
-[![Codecov][codecov-badge][codecov]
+[![Codecov][codecov-badge]][codecov]
 [![License][license-badge]][license]
 
 Asq is a tool for the automated retrieval and delivery of datasets obtained via SQL query.

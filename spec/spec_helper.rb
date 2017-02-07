@@ -26,11 +26,11 @@ if ENV['CIRCLE_ARTIFACTS']
   SimpleCov.coverage_dir(dir)
 end
 
-SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
+# SimpleCov.formatter = SimpleCov::Formatter::RcovFormatter
 SimpleCov.start 'rails'
 
-# require 'codecov'
-# SimpleCov.formatter = SimpleCov::Formatter::Codecov
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

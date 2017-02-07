@@ -3,7 +3,7 @@
 
 [![CircleCI][build-badge]][build]
 [![Codecov][codecov-badge]][codecov]
-[![License][license-badge]][license]
+<!--- [![License][license-badge]][license] --->
 
 Asq is a tool for the automated retrieval and delivery of datasets obtained via SQL query.
 

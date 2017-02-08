@@ -51,6 +51,7 @@ group :development do
   gem 'rails_layout'
   gem 'thin'
   gem 'yaml_db'
+  gem 'rails_real_favicon'
 end
 
 group :development, :test do

@@ -9,7 +9,7 @@ class ReleaseNotesController < ApplicationController
     release_notes = ReleaseNotes.new(start_note)
     @notes = content_to_array(release_notes.notes)
 
-    if current_user && @notes.empty?
+    if current_user && !@notes.empty?
       current_user.last_release_note_viewed = release_notes.notes.first[:id]
       current_user.save
     end

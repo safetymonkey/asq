@@ -81,7 +81,7 @@ class SftpClient
         @sftp = SFTPClient.new(
           @host, @username, @password,
           password: @password, port: @port, number_of_password_prompts: 0,
-          keys: ['config/keys/id_rsa'], host_key: 'ssh-rsa', timeout: 120
+          keys: ['config/keys/id_rsa'], timeout: 120
         )
         success = true
       rescue StandardError => e

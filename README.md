@@ -20,25 +20,8 @@ Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.
 Database
 ---
 
-This application uses SQLite with ActiveRecord.
+This application uses PostgreSQL with ActiveRecord.
 
-Development
--
-
--   Template Engine: ERB
--   Testing Framework: Test::Unit
--   Front-end Framework: Bootstrap 3.0 (Sass)
--   Form Builder: None
--   Authentication: Devise
--   Authorization: None
--   Admin: None
-
-
-
-
-
-
- delivery is disabled in development.
 
 Getting Started
 

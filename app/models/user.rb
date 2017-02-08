@@ -6,6 +6,10 @@ class User < ActiveRecord::Base
   # before_save :get_ldap_params
   before_save :make_first_user_admin
 
+  def name
+    login
+  end
+
   private
 
   # Is the user getting saved the ONLY user in the system?
@@ -15,11 +19,8 @@ class User < ActiveRecord::Base
   end
 
   # def get_ldap_params
-  #   self.name = Devise::LDAP::Adapter.get_ldap_param(login, 'gecos').blank? ?
   #     Devise::LDAP::Adapter.get_ldap_param(login, 'cn').first :
   #     Devise::LDAP::Adapter.get_ldap_param(login, 'gecos').first
-  #   self.firstname = Devise::LDAP::Adapter.get_ldap_param(login, 'givenName').first
-  #   self.lastname = Devise::LDAP::Adapter.get_ldap_param(login, 'sn').first
   #   self.email = Devise::LDAP::Adapter.get_ldap_param(login, 'mail').first
   # rescue NoMethodError
   #   logger.warn 'User created, but not found in LDAP'

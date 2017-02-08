@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  protect_from_forgery with: :exception, prepend: true
 
   # We need to pass in the environment into gon so we can make the decision
   # whether or not to execute certain Javascript, like Google Analytics
@@ -60,6 +60,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:login, :email])
   end
 end

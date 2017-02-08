@@ -23,7 +23,6 @@ RSpec.describe SftpClient do
               port: 'port',
               number_of_password_prompts: 0,
               keys: ['config/keys/id_rsa'],
-              host_key: 'ssh-rsa',
               timeout: 120)
       SftpClient.new(credentials)
     end

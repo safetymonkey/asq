@@ -5,12 +5,14 @@
 [![Codecov][codecov-badge]][codecov]
 <!-- [![License][license-badge]][license] -->
 
-Asq is a tool for the automated retrieval and delivery of datasets obtained via SQL query.
+Asq is a tool for the automated retrieval and delivery of datasets obtained via SQL query. Administrators manage a central set of database connections and authorized users may then use those connections to create monitors and reports. Monitors return results and go into alert only if certain criteria are met on the result set, whereas reports return results consistently. The queries can be run on individually set schedules and once a result set is returned those results can be delivered via email, FTP, or SFTP.
 
-Ruby on Rails
+[Demo](http://asq-monitoring.herokuapp.com)
+
+Dependencies
 ---
 
-This application requires:
+Asq is a Ruby on Rails gem:
 
 -   Ruby
 -   Rails
@@ -56,16 +58,23 @@ If you add functionality to this application, create an alternative
 implementation, or build an application that is similar, please contact
 me and I’ll add a note to the README so that others can find your work.
 
-Credits
---
+## Creators
 
-This application was generated with the [rails_apps_composer](https://github.com/RailsApps/rails_apps_composer) gem
-provided by the [RailsApps Project](http://railsapps.github.io/).
+**Jon Grover**
 
-License
---
+- <https://twitter.com/safetymonkey>
+- <https://github.com/safetymonkey>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+**Greg HXC**
+
+- <https://twitter.com/greghxc>
+- <https://github.com/greghxc>
+
+
+
+## Copyright and license
+
+Code and documentation copyright 2011-2017 the [authors](https://github.com/twbs/bootstrap/graphs/contributors). Orginally developed for [Marchex, Inc.](https://marchex.com) ([Github](https://github.com/marchex)). Code released under the [MIT License](https://github.com/safetymonkey/asq/blob/master/LICENSE.txt).
 
 [asq-logo]: images/asq-sml.png
 

@@ -72,7 +72,7 @@ GEM
       momentjs-rails (>= 2.8.1)
     browser (2.3.0)
     builder (3.2.3)
-    cancancan (1.15.0)
+    cancancan (1.16.0)
     capybara (2.11.0)
       addressable
       mime-types (>= 1.16)
@@ -356,7 +356,7 @@ DEPENDENCIES
   bootstrap-sass (= 3.3.7)
   bootstrap3-datetimepicker-rails (~> 4.17.43)
   browser
-  cancancan (= 1.15.0)
+  cancancan (= 1.16.0)
   capybara
   ci_reporter
   ci_reporter_rspec
@@ -394,13 +394,13 @@ DEPENDENCIES
   rails_real_favicon
   redcarpet (~> 3.4.0)
   responders (= 2.3.0)
-  rest-client (= 2.0.0)
+  rest-client (~> 2.0.0)
   roadie-rails (~> 1.1.0)
   rspec-rails (~> 3.1)
   rubocop
   rubocop-checkstyle_formatter
   sass-rails (= 5.0.6)
-  sdoc (= 0.4.0)
+  sdoc (~> 0.4.0)
   selenium-webdriver
   simplecov
   simplecov-rcov
@@ -415,4 +415,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.14.3
+   1.14.4

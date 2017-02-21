@@ -9,7 +9,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '3.3.7'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'browser'
-gem 'cancancan', '1.15.0' # Changed this from cancan, may need to roll back
+gem 'cancancan', '1.16.0' # Changed this from cancan, may need to roll back
 gem 'coffee-rails', '4.2.1'
 gem 'crypt_keeper', github: 'jmazzi/crypt_keeper'
 gem 'daemons'
@@ -32,7 +32,7 @@ gem 'rails', '~> 5.0.1'
 gem 'redcarpet', '~> 3.4.0'
 # gem 'rename', '1.0.2'
 gem 'responders', '2.3.0'
-gem 'rest-client', '2.0.0'
+gem 'rest-client', '~> 2.0.0'
 gem 'roadie-rails', '~> 1.1.0'
 # gem 'ruby-oci8', '2.2.3'
 gem 'sass-rails', '5.0.6'
@@ -41,7 +41,7 @@ gem 'will_paginate', '3.1.5'
 gem 'will_paginate-bootstrap'
 
 group :doc do
-  gem 'sdoc', '0.4.0'
+  gem 'sdoc', '~> 0.4.0'
 end
 
 group :development do

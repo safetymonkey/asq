@@ -29,9 +29,11 @@ $ cd asq
 ```
 2. __TODO:__ Add instructions for editing the plugins config file
 
-3. Install the required gems and set up the database
+3. Install the required gems and set up the cron job
+The crontab is used to hit an endpoint every minute that scans for queries that are ready for a refresh.
 ```sh
 $ bundle install --without production
+$ cp templates/Asq.crontab /etc/cron.d/Asq
 ```
 4. Setup the database
 Ensurre that you have Postgres running and have created credentials that match your _config/database.yml_ file. By default, development environments have a user of _asq_ and a password of _password_. You can either give this user permissions to create databases or create the _asq_development_ and _asq_test_ databases manually and then give your service account permissions to those databases. Then execute the following rake task:

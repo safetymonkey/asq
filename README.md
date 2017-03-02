@@ -12,17 +12,44 @@ Asq is a tool for the automated retrieval and delivery of datasets obtained via 
 Dependencies
 ---
 
-Asq is a Ruby on Rails gem:
+Asq is a Ruby on Rails application with the following pre-requisites:
 
--   Ruby
--   Rails
+-   Ruby 2.3.3 + the 'bundler' gem
+-   Rails 5.0.1
+-   Postgres 9
 
-Learn more about [Installing Rails](http://railsapps.github.io/installing-rails.html).
-
-Database
+Setup
 ---
+Setup is straightforward. The following commands will help you download the application, set it up, verify that all tests are passing, and then start the application.
 
-This application uses PostgreSQL with ActiveRecord.
+1. Clone the repository
+```sh
+$ git clone https://github.com/safetymonkey/asq.git
+$ cd asq
+```
+2. __TODO:__ Add instructions for editing the plugins config file
+
+3. Install the required gems and set up the database
+```sh
+$ bundle install --without production
+```
+4. Setup the database
+Ensurre that you have Postgres running and have created credentials that match your _config/database.yml_ file. By default, development environments have a user of _asq_ and a password of _password_. You can either give this user permissions to create databases or create the _asq_development_ and _asq_test_ databases manually and then give your service account permissions to those databases. Then execute the following rake task:
+```sh
+$ bundle exec rake db:setup
+```
+5. Verify that tests are passing
+```sh
+$ bundle exec rspec
+```
+6. Start the application
+You'll need to start the primary front-end application as well as the back-end Delayed Job workers
+```
+$ bundle exec rails start
+$ bin/delayed_job start -n <number of workers you want to start>
+```
+7. __TODO:__ Add some instruction regarding setting up the cron job
+
 
 Contributing
 --

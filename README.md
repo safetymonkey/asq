@@ -50,7 +50,6 @@ You'll need to start the primary front-end application as well as the back-end D
 $ bundle exec rails start
 $ bin/delayed_job start -n <number of workers you want to start>
 ```
-7. __TODO:__ Add some instruction regarding setting up the cron job
 
 
 Contributing

@@ -1,5 +1,12 @@
 source 'http://rubygems.org'
 ruby '2.3.3'
+require 'yaml'
+
+features = YAML.load_file(File.expand_path('../config/features.yml', __FILE__))
+
+if features['oracle_db']
+  gem 'ruby-oci8', '2.2.3'
+end
 
 # gem 'coffee-rails', '4.0.0'
 # gem 'devise_ldap_authenticatable', '0.8.1'
@@ -34,7 +41,6 @@ gem 'redcarpet', '~> 3.4.0'
 gem 'responders', '2.3.0'
 gem 'rest-client', '~> 2.0.0'
 gem 'roadie-rails', '~> 1.1.0'
-# gem 'ruby-oci8', '2.2.3'
 gem 'sass-rails', '5.0.6'
 gem 'uglifier', '3.0.4'
 gem 'will_paginate', '3.1.5'

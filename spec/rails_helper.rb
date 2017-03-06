@@ -32,6 +32,12 @@ Capybara.javascript_driver = :poltergeist
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  # unless Rails.configuration.feature_settings['oracle_db']
+    # config.filter_run_excluding oracle_db: true
+  # end
+end
+
+RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

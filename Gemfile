@@ -8,7 +8,7 @@ gem 'ruby-oci8', '2.2.3' if features['oracle_db']
 gem 'mysql2', '0.4.5' if features['mysql_db']
 
 # gem 'coffee-rails', '4.0.0'
-# gem 'devise_ldap_authenticatable', '0.8.1'
+gem 'devise_ldap_authenticatable', '~> 0.8.5'
 
 gem 'acts-as-taggable-on', '4.0.0'
 gem 'autoprefixer-rails'

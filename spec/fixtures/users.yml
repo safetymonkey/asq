@@ -3,15 +3,18 @@ admin:
   email: alexandra@example.org
   is_admin: true
   is_editor: true
+  approved: true
 
 editor:
   login: eeditor
   email: erin@example.org
   is_admin: false
   is_editor: true
+  approved: true
 
 regular:
   login: rregular
   email: ronnie@example.org
   is_admin: false
   is_editor: false
+  approved: true

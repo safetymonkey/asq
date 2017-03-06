@@ -1,11 +1,9 @@
 # The ApplicationController class gets executed on all pages.
 class ApplicationController < ActionController::Base
+  rescue_from DeviseLdapAuthenticatable::LdapException do |exception|
+    render text: exception, status: 500
+  end
   before_action :configure_permitted_parameters, if: :devise_controller?
-
-  # Uncomment the below if you have re-enabled DeviseLdapAuthenticatable
-  # rescue_from DeviseLdapAuthenticatable::LdapException do |exception|
-  #   render text: exception, status: 500
-  # end
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to '/', alert: "Unable to access requested page: #{exception.message}"

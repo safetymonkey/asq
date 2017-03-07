@@ -4,9 +4,8 @@ require 'yaml'
 
 features = YAML.load_file(File.expand_path('../config/features.yml', __FILE__))
 
-if features['oracle_db']
-  gem 'ruby-oci8', '2.2.3'
-end
+gem 'ruby-oci8', '2.2.3' if features['oracle_db']
+gem 'mysql2', '0.4.5' if features['mysql_db']
 
 # gem 'coffee-rails', '4.0.0'
 # gem 'devise_ldap_authenticatable', '0.8.1'
@@ -28,7 +27,6 @@ gem 'gon', '~> 6.1.0'
 gem 'jbuilder', '2.6.1'
 gem 'json-stream'
 gem 'momentjs-rails', '>= 2.9.0'
-gem 'mysql2', '0.4.5'
 gem 'net-sftp'
 gem 'net-ssh'
 gem 'oj'

@@ -19,10 +19,12 @@ class DatabasesController < ApplicationController
   # GET /databases/new
   def new
     @database = Database.new
+    @db_types = available_db_types
   end
 
   # GET /databases/1/edit
   def edit
+    @db_types = available_db_types
   end
 
   # POST /databases
@@ -63,6 +65,17 @@ class DatabasesController < ApplicationController
       format.html { redirect_to databases_url }
       format.json { head :no_content }
     end
+  end
+
+  def available_db_types
+    available_types = [
+      { feature: 'mysql_db', option: %w(MySQL mysql) },
+      { feature: 'postgres_db', option: %w(PostgreSQL postgres) },
+      { feature: 'oracle_db', option: %w(Oracle oracle) }
+    ].map do |db_type|
+      db_type[:option] if Rails.configuration.feature_settings[db_type[:feature]]
+    end.compact
+    available_types.empty? ? [['No DB types available', '']] : available_types
   end
 
   private

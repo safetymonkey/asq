@@ -38,7 +38,7 @@
   </div>
   <div class="field">
     <%= f.label :db_type %><br>
-    <%= select(:database, :db_type, [['MySQL', 'mysql'], ['PostgreSQL', 'postgres'], ['Oracle', 'oracle']], {}, { :class => "testable form-control" }) %>
+    <%= select(:database, :db_type, @db_types, {}, { :class => "testable form-control" }) %>
   </div>
   <div class="actions">
     <button type="button" class="test-database">Test Database Connection</button>

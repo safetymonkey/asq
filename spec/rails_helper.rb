@@ -31,6 +31,14 @@ Capybara.javascript_driver = :poltergeist
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+# Allows specs to be tagged with a feature name for exclusion unless feature
+# enabled
+RSpec.configure do |config|
+  Rails.configuration.feature_settings.each do |name, enabled|
+    config.filter_run_excluding name => true unless enabled
+  end
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

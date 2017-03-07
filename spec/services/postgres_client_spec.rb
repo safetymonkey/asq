@@ -9,8 +9,8 @@ class Database < ActiveRecord::Base
   end
 end
 
-RSpec.describe PostgresClient do
-  let(:database) do 
+RSpec.describe 'PostgresClient', 'postges_db' => true do
+  let(:database) do
     instance_double('Database',
                     db_type: 'postgres',
                     hostname: 'fakehost',

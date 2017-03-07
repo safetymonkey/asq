@@ -1,7 +1,7 @@
 # The ApplicationController class gets executed on all pages.
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  helper_method :debug_params
   # Uncomment the below if you have re-enabled DeviseLdapAuthenticatable
   # rescue_from DeviseLdapAuthenticatable::LdapException do |exception|
   #   render text: exception, status: 500
@@ -48,6 +48,10 @@ class ApplicationController < ActionController::Base
     @redirect_url = url
     @redirect_delay = delay
     render
+  end
+
+  def debug_params
+    request.filtered_parameters
   end
 
   private

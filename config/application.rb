@@ -12,6 +12,7 @@ Bundler.require(*Rails.groups)
 
 module AsqApplication
   class Application < Rails::Application
+    config.filter_parameters += [:password]
     config.middleware.use ActionDispatch::Flash
     config.active_record.time_zone_aware_types = [:datetime]
 

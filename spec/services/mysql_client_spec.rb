@@ -9,7 +9,7 @@ class Database < ActiveRecord::Base
   end
 end
 
-RSpec.describe MysqlClient do
+RSpec.describe 'MysqlClient', 'mysql_db' => true do
   # These lines create mock objects for use in our tests. We don't want to use
   # an actual MySQL::Client object during testing, since we go into this spec
   # assuming that it works properly. Mocking the object means we can directly

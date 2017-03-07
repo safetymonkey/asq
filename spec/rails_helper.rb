@@ -31,10 +31,12 @@ Capybara.javascript_driver = :poltergeist
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
+# Allows specs to be tagged with a feature name for exclusion unless feature
+# enabled
 RSpec.configure do |config|
-  # unless Rails.configuration.feature_settings['oracle_db']
-    # config.filter_run_excluding oracle_db: true
-  # end
+  Rails.configuration.feature_settings.each do |name, enabled|
+    config.filter_run_excluding name => true unless enabled
+  end
 end
 
 RSpec.configure do |config|

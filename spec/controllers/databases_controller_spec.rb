@@ -1,8 +1,39 @@
 require 'rails_helper'
 
 RSpec.describe DatabasesController, type: :controller do
+  fixtures :users
+
+  before(:example) do
+    sign_in(User.find_by_login('aadmin'))
+  end
+
+  describe 'GET #new' do
+    it 'populates @db_types' do
+      mock_response = 'stub'
+      allow(controller)
+        .to receive(:available_db_types)
+        .and_return(mock_response)
+      get :new
+      expect(assigns(:db_types)).to eq(mock_response)
+    end
+  end
+
+  describe 'GET #edit' do
+    let(:db) { FactoryGirl.create(:database) }
+    it 'populates @db_types' do
+      mock_response = 'stub'
+      allow(controller)
+        .to receive(:available_db_types)
+        .and_return(mock_response)
+      get :edit, params: { id: db.id }
+      expect(assigns(:db_types)).to eq(mock_response)
+    end
+  end
+
+  describe 'GET #edit' do
+  end
+
   describe 'available_db_types' do
-    let(:database_controller) { DatabaseController.new }
     describe 'when all dbs enabled' do
       it 'return expected db types' do
         expected_response = [

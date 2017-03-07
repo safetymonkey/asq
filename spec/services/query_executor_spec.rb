@@ -7,19 +7,19 @@ RSpec.describe QueryExecutor do
   # to see what comes out. We use mock objects because we aren't really making a database connection, and we don't want to rely
   # on the Database object actually needing to work in order for our tests to pass. Save that for integration tests.
 
-  it "executes MysqlClient.execute_query() in response to a passed-in MySQL database object", 'oracle_db' => true do
+  it "executes MysqlClient.execute_query() in response to a passed-in MySQL database object", 'mysql_db' => true do
     database = instance_double("Database", :db_type => "mysql", :hostname => "fakehost", :username => "fakeuser", :password => "fakepassword",:port => 3306)
     expect(MysqlClient).to receive(:execute_query)
     QueryExecutor.execute_query(query_text, database, 10)
   end
 
-  it "executes Postgres.execute_query() in response to a passed-in MySQL database object", 'postgres_db' => true  do
+  it "executes Postgres.execute_query() in response to a passed-in Postgres database object", 'postgres_db' => true  do
     database = instance_double("Database", :db_type => "postgres", :hostname => "fakehost", :username => "fakeuser", :password => "fakepassword",:port => 5432, :db_name => "fakedb" )
     expect(PostgresClient).to receive(:execute_query)
     QueryExecutor.execute_query(query_text, database, 10)
   end
 
-  it "executes Oracle.execute_query() in response to a passed-in MySQL database object", 'mysql_db' => true do
+  it "executes Oracle.execute_query() in response to a passed-in Oracle database object", 'oracle_db' => true do
     database = instance_double("Database", :db_type => "oracle", :hostname => "fakehost", :username => "fakeuser", :password => "fakepassword",:port => 1521)
     expect(OracleClient).to receive(:execute_query)
     QueryExecutor.execute_query(query_text, database, 10)

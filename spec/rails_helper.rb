@@ -57,7 +57,7 @@ RSpec.configure do |config|
   # Used to clean out any underlying data that may not have been removed after
   # the test suite completes.
   config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.clean_with :truncation, except: %w(ar_internal_metadata)
   end
 
   config.before(:each) do

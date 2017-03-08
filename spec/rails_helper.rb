@@ -35,7 +35,7 @@ ActiveRecord::Migration.maintain_test_schema!
 # enabled
 RSpec.configure do |config|
   Rails.configuration.feature_settings.each do |name, enabled|
-    config.filter_run_excluding name => true unless enabled
+    config.filter_run_excluding name => !enabled
   end
 end
 

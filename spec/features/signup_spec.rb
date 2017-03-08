@@ -1,17 +1,9 @@
 require 'rails_helper'
 require 'capybara/rspec'
 
-unless Settings.ldap_enabled
-  RSpec.describe 'the signup process', type: :feature do
-      fixtures :users
-
-    before(:all) do
-      @ldap_server = Ladle::Server.new(ldif: 'spec/features/test_ldap_dir.ldif')
-                                  .start
-    end
-    after(:all) do
-      @ldap_server.stop if @ldap_server
-    end
+RSpec.describe 'the signup process', type: :feature do
+  describe 'when ldap not enabled', 'ldap' => false do
+    fixtures :users
 
     context 'with valid information' do
       it 'requires admin approval' do

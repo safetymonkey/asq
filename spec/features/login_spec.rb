@@ -5,8 +5,9 @@ RSpec.describe 'the signin process', type: :feature do
   fixtures :users
 
   before(:all) do
-    @ldap_server = Ladle::Server.new(ldif: 'spec/features/test_ldap_dir.ldif')
-                                .start
+    @ldap_server =
+      Ladle::Server
+      .new(quiet: true, ldif: 'spec/features/test_ldap_dir.ldif').start
   end
   after(:all) do
     @ldap_server.stop if @ldap_server

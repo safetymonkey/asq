@@ -64,7 +64,7 @@ class Settings
         'hostname' => Rails.application.hostname, 'environemnt' => '',
         'result_limit' => 5000, 'tsg_prefix' => '',
         'global_rt_check' => true, 'max_db_timeout' => max_db_timeout,
-        'db_statement_timeout' => max_db_timeout, 'ldap_enabled' => true
+        'db_statement_timeout' => max_db_timeout
       }
     end
   end

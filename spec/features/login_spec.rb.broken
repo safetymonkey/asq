@@ -62,6 +62,7 @@ RSpec.describe 'the signin process', type: :feature do
     end
 
     it 'does not show admin menu' do
+      User.count.should == 3
       expect(page).not_to have_link('Admin')
     end
   end

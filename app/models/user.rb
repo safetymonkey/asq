@@ -1,8 +1,13 @@
 class User < ActiveRecord::Base
   # Load Devise modules
-  devise :ldap_authenticatable, :rememberable, :trackable, :registerable,
-         :trackable # Haven't re-added: :recoverable, :validatable
-         # Look at adding database_authenticatable?
+  if Settings.ldap_enabled
+    devise :ldap_authenticatable, :rememberable, :trackable
+  else
+    devise :database_authenticatable, :rememberable, :trackable, :recoverable,
+           :registerable
+  end
+  # Haven't re-added: :recoverable, :registerable, :validatable
+  # Look at adding database_authenticatable?
 
   before_save :get_ldap_params
   before_save :make_first_user_admin
@@ -29,10 +34,10 @@ class User < ActiveRecord::Base
   # Is the user getting saved the ONLY user in the system?
   # Make sure it's an admin.
   def make_first_user_admin
-    if User.count == 0
-      self.is_admin = true
-      self.approved = true
-    end
+    return if User.count.zero?
+
+    self.is_admin = true
+    self.approved = true
   end
 
   def get_ldap_params

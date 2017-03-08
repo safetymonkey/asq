@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   # Is the user getting saved the ONLY user in the system?
   # Make sure it's an admin.
   def make_first_user_admin
-    return if User.count.zero?
+    return unless User.count.zero?
 
     self.is_admin = true
     self.approved = true

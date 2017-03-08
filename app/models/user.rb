@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   # Load Devise modules
-  if Settings.ldap_enabled
+  # if Settings.ldap_enabled
     devise :ldap_authenticatable, :rememberable, :trackable
-  else
-    devise :database_authenticatable, :rememberable, :trackable, :recoverable,
-           :registerable
-  end
+  # else
+  #   devise :database_authenticatable, :rememberable, :trackable, :recoverable,
+  #          :registerable
+  # end
   # Haven't re-added: :recoverable, :registerable, :validatable
   # Look at adding database_authenticatable?
 

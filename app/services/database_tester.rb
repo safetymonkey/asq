@@ -9,23 +9,27 @@ class DatabaseTester
     # Oracle is weird, and needs a "from dual" if you do a simple select
     query_text += ' from dual' if db_type == 'oracle'
 
-    begin
-      query_results = QueryExecutor.execute_query(query_text, database, 10)
+    if !database.hostname.empty?
+      begin
+        query_results = QueryExecutor.execute_query(query_text, database, 10)
 
-      # The QueryExecutor returns an array of hashes. For our sample test, this
-      # array of hashes could look like [{"RESULT"=>"pass"}] or
-      # [{"result"=>"pass"}], depending on the database type. This means we have
-      # to downcase the key of the first row of results to make sure it
-      # says "result".
-      if query_results[0].keys[0].downcase == 'result' &&
-         query_results[0].values[0] == 'pass'
-        test_results = 'Test successful!'
-      else
-        test_results = 'Unexpected result from a test query. This is ' \
-        'probably not user error. Please have BEST investigate.'
+        # The QueryExecutor returns an array of hashes. For our sample test,
+        # this array of hashes could look like [{"RESULT"=>"pass"}] or
+        # [{"result"=>"pass"}], depending on the database type. We have
+        # to downcase the key of the first row of results to make sure it
+        # says "result".
+        if query_results[0].keys[0].downcase == 'result' &&
+           query_results[0].values[0] == 'pass'
+          test_results = 'Test successful!'
+        else
+          test_results = 'Unexpected result from a test query. This is ' \
+          'probably not user error. Please have BEST investigate.'
+        end
+      rescue Exception => e
+        test_results = "Error: #{e.to_s}"
       end
-    rescue Exception => e
-      test_results = "Error: #{e.to_s}"
+    else
+      test_results = 'Error: Database connection information incomplete.'
     end
 
     # Dear my future self. In between bouts of crushin' fools, you may want to

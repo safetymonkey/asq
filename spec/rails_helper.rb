@@ -41,6 +41,19 @@ RSpec.configure do |config|
   Rails.configuration.feature_settings.each do |name, enabled|
     config.filter_run_excluding name => !enabled
   end
+
+  # Start up a Ladle LDAP server before running test suite if feature is enabled
+  if Rails.configuration.feature_settings['ldap']
+    config.before(:suite) do
+      @ldap_server =
+        Ladle::Server
+        .new(quiet: true, ldif: 'spec/features/test_ldap_dir.ldif').start
+    end
+
+    config.after(:suite) do
+      @ldap_server.stop if @ldap_server
+    end
+  end
 end
 
 RSpec.configure do |config|

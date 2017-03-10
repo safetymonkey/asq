@@ -28,10 +28,10 @@ authorizations: &AUTHORIZATIONS
 ## Environment
 
 development:
-  host: ldap.sea.marchex.com
-  port: 389
+  host: localhost
+  port: 3897
   attribute: uid
-  base: OU=users,DC=marchex,DC=com
+  base: ou=people,dc=example,dc=org
   admin_user: cn=admin,dc=test,dc=com
   admin_password: admin_password
   ssl: false
@@ -46,26 +46,6 @@ test:
   admin_password: admin_password
   ssl: false
   # <<: *AUTHORIZATIONS
-
-# development:
-#   host: localhost
-#   port: 389
-#   attribute: cn
-#   base: ou=people,dc=test,dc=com
-#   admin_user: cn=admin,dc=test,dc=com
-#   admin_password: admin_password
-#   ssl: false
-#   # <<: *AUTHORIZATIONS
-
-# test:
-#   host: localhost
-#   port: 3389
-#   attribute: cn
-#   base: ou=people,dc=test,dc=com
-#   admin_user: cn=admin,dc=test,dc=com
-#   admin_password: admin_password
-#   ssl: simple_tls
-#   # <<: *AUTHORIZATIONS
 
 production:
   host: localhost

@@ -1,4 +1,4 @@
-ldap: true
+ldap: false
 oracle_db: false
 postgres_db: true
 mysql_db: false

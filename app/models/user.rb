@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   # Haven't re-added: :recoverable, :registerable, :validatable
   # Look at adding database_authenticatable?
 
-  before_save :get_ldap_params
+  before_save :sync_ldap_params if Rails.configuration.feature_settings['ldap']
   before_save :make_first_user_admin
 
   def name
@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     self.approved = true
   end
 
-  def get_ldap_params
+  def sync_ldap_params
     # self.name = ldap_attr('gecos').blank? ? ldap_attr('cn') : ldap_attr('gecos')
     self.email = ldap_attr('mail')
   end

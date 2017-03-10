@@ -4,6 +4,8 @@ admin:
   is_admin: true
   is_editor: true
   approved: true
+  encrypted_password: '$2a$10$FpDCMApP6aSmpYfw4FGdX.M.JimqMV9g5H4zKREFRKKnNNDenvRKu'
+  # Password is 'smada'
 
 editor:
   login: eeditor
@@ -11,6 +13,7 @@ editor:
   is_admin: false
   is_editor: true
   approved: true
+  encrypted_password: '$2a$10$FpDCMApP6aSmpYfw4FGdX.M.JimqMV9g5H4zKREFRKKnNNDenvRKu'
 
 regular:
   login: rregular
@@ -18,3 +21,4 @@ regular:
   is_admin: false
   is_editor: false
   approved: true
+  encrypted_password: '$2a$10$FpDCMApP6aSmpYfw4FGdX.M.JimqMV9g5H4zKREFRKKnNNDenvRKu'

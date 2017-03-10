@@ -5,14 +5,6 @@ RSpec.describe 'external database management', type: :feature do
   fixtures :users
   fixtures :databases
 
-  before(:all) do
-    @ldap_server = Ladle::Server.new(ldif: 'spec/features/test_ldap_dir.ldif')
-                                .start
-  end
-  after(:all) do
-    @ldap_server.stop if @ldap_server
-  end
-
   context 'While user is admin' do
     # Find a better way to login to the user page.
     before(:example) do

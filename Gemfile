@@ -8,7 +8,7 @@ gem 'ruby-oci8', '2.2.3' if features['oracle_db']
 gem 'mysql2', '0.4.5' if features['mysql_db']
 
 # gem 'coffee-rails', '4.0.0'
-# gem 'devise_ldap_authenticatable', '0.8.1'
+gem 'devise_ldap_authenticatable', '~> 0.8.5'
 
 gem 'acts-as-taggable-on', '4.0.0'
 gem 'autoprefixer-rails'
@@ -33,7 +33,7 @@ gem 'oj'
 gem 'oj_mimic_json'
 gem 'paper_trail', '6.0.2'
 gem 'pg', '0.19.0'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.0.2'
 gem 'redcarpet', '~> 3.4.0'
 # gem 'rename', '1.0.2'
 gem 'responders', '2.3.0'
@@ -53,9 +53,9 @@ group :development do
   gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
   # gem 'quiet_assets', '1.1.0'
   gem 'rails_layout'
+  gem 'rails_real_favicon'
   gem 'thin'
   gem 'yaml_db'
-  gem 'rails_real_favicon'
 end
 
 group :development, :test do

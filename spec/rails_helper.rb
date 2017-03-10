@@ -8,6 +8,10 @@ require 'rspec/rails'
 require 'capybara/poltergeist'
 require 'devise'
 
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(app, js_errors: false)
+end
+
 Capybara.javascript_driver = :poltergeist
 
 # Add additional requires below this line. Rails is not loaded until this point!
@@ -35,7 +39,20 @@ ActiveRecord::Migration.maintain_test_schema!
 # enabled
 RSpec.configure do |config|
   Rails.configuration.feature_settings.each do |name, enabled|
-    config.filter_run_excluding name => true unless enabled
+    config.filter_run_excluding name => !enabled
+  end
+
+  # Start up a Ladle LDAP server before running test suite if feature is enabled
+  if Rails.configuration.feature_settings['ldap']
+    config.before(:suite) do
+      @ldap_server =
+        Ladle::Server
+        .new(quiet: true, ldif: 'spec/features/test_ldap_dir.ldif').start
+    end
+
+    config.after(:suite) do
+      @ldap_server.stop if @ldap_server
+    end
   end
 end
 

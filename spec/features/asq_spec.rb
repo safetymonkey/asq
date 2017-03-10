@@ -24,14 +24,6 @@ RSpec.describe 'asq management', type: :feature do
   end
 
   context 'while logged in' do
-    before(:all) do
-      @ldap_server = Ladle::Server
-                     .new(ldif: 'spec/features/test_ldap_dir.ldif').start
-    end
-    after(:all) do
-      @ldap_server.stop if @ldap_server
-    end
-
     context 'as editor' do
       before(:example) do
         visit 'users/sign_in'

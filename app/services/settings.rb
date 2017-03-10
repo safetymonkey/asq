@@ -56,8 +56,11 @@ class Settings
     def defaults
       max_db_timeout = [
         (Delayed::Worker.max_run_time.to_i * 0.95),
-        (Delayed::Worker.max_run_time.to_i - 60)].max
-      { 'dj_workers' => 0, 'vip_name' => '',
+        (Delayed::Worker.max_run_time.to_i - 60)
+      ].max
+
+      {
+        'dj_workers' => 0, 'vip_name' => '',
         'hostname' => Rails.application.hostname, 'environemnt' => '',
         'result_limit' => 5000, 'tsg_prefix' => '',
         'global_rt_check' => true, 'max_db_timeout' => max_db_timeout,

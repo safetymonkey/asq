@@ -3,15 +3,22 @@ admin:
   email: alexandra@example.org
   is_admin: true
   is_editor: true
+  approved: true
+  encrypted_password: '$2a$10$FpDCMApP6aSmpYfw4FGdX.M.JimqMV9g5H4zKREFRKKnNNDenvRKu'
+  # Password is 'smada'
 
 editor:
   login: eeditor
   email: erin@example.org
   is_admin: false
   is_editor: true
+  approved: true
+  encrypted_password: '$2a$10$FpDCMApP6aSmpYfw4FGdX.M.JimqMV9g5H4zKREFRKKnNNDenvRKu'
 
 regular:
   login: rregular
   email: ronnie@example.org
   is_admin: false
   is_editor: false
+  approved: true
+  encrypted_password: '$2a$10$FpDCMApP6aSmpYfw4FGdX.M.JimqMV9g5H4zKREFRKKnNNDenvRKu'

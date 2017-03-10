@@ -4,14 +4,6 @@ require 'capybara/rspec'
 RSpec.describe 'the signin process', type: :feature do
   fixtures :users
 
-  before(:all) do
-    @ldap_server = Ladle::Server.new(ldif: 'spec/features/test_ldap_dir.ldif')
-                                .start
-  end
-  after(:all) do
-    @ldap_server.stop if @ldap_server
-  end
-
   context 'with correct password' do
     it 'signs me in' do
       visit 'users/sign_in'

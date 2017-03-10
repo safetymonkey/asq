@@ -1,8 +1,29 @@
-## LDAP
-# These parameters are only used if you have re-enabled the
-# DeviseLdapAuthenticatable gem. Implementation of this gem turned out to be a
-# little bit of a pain to figure out so we left our work in the code.
-# You are free to remove it.
+## Authorizations
+# Uncomment out the merging for each environment that you'd like to include.
+# You can also just copy and paste the tree (do not include the "authorizations") to each
+# environment if you need something different per environment.
+authorizations: &AUTHORIZATIONS
+  allow_unauthenticated_bind: false
+  group_base: ou=groups,dc=test,dc=com
+  ## Requires config.ldap_check_group_membership in devise.rb be true
+  # Can have multiple values, must match all to be authorized
+  required_groups:
+    # If only a group name is given, membership will be checked against "uniqueMember"
+    - cn=admins,ou=groups,dc=test,dc=com
+    - cn=users,ou=groups,dc=test,dc=com
+    # If an array is given, the first element will be the attribute to check against, the second the group name
+    - ["moreMembers", "cn=users,ou=groups,dc=test,dc=com"]
+  ## Requires config.ldap_check_attributes in devise.rb to be true
+  ## Can have multiple attributes and values, must match all to be authorized
+  require_attribute:
+    objectClass: inetOrgPerson
+    authorizationRole: postsAdmin
+  ## Requires config.ldap_check_attributes_presence in devise.rb to be true
+  ## Can have multiple attributes set to true or false to check presence, all must match all to be authorized
+  require_attribute_presence:
+    mail: true
+    telephoneNumber: true
+    serviceAccount: false
 
 ## Environment
 
@@ -11,7 +32,7 @@ development:
   port: 3897
   attribute: uid
   base: ou=people,dc=example,dc=org
-  admin_user: cn=admin,dc=development,dc=com
+  admin_user: cn=admin,dc=test,dc=com
   admin_password: admin_password
   ssl: false
   # <<: *AUTHORIZATIONS
@@ -28,10 +49,10 @@ test:
 
 production:
   host: localhost
-  port: 3897
-  attribute: uid
-  base: ou=people,dc=example,dc=org
-  admin_user: cn=admin,dc=production,dc=com
+  port: 636
+  attribute: cn
+  base: ou=people,dc=test,dc=com
+  admin_user: cn=admin,dc=test,dc=com
   admin_password: admin_password
-  ssl: false
+  ssl: start_tls
   # <<: *AUTHORIZATIONS

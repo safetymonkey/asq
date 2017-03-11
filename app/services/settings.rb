@@ -37,7 +37,7 @@ class Settings
       # for it. We can probably remove the YAML.load call in the future.
       found_value = Setting.find_by(var: setting_var).value
       return '' if found_value.empty?
-      YAML.load(found_value)
+      YAML.safe_load(found_value)
     rescue NoMethodError
       # If the requested Setting doesn't exist, return its default value.
       # If *that* doesn't exist, return an empty string.
@@ -60,9 +60,8 @@ class Settings
       ].max
 
       {
-        'dj_workers' => 0, 'vip_name' => '',
-        'hostname' => Rails.application.hostname, 'result_limit' => 5000,
-        'tsg_prefix' => '', 'global_rt_check' => true,
+        'vip_name' => '', 'hostname' => Rails.application.hostname,
+        'result_limit' => 5000, 'tsg_prefix' => '', 'global_rt_check' => true,
         'max_db_timeout' => max_db_timeout,
         'db_statement_timeout' => max_db_timeout
       }

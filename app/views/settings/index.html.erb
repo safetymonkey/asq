@@ -41,13 +41,6 @@
         </div>
 
         <div class="form-group">
-          <%= label_tag(:dj_workers, "Delayed Job workers", :class => "col-sm-2 control-label") %>
-          <div class="col-sm-5">
-            <%= number_field_tag(:dj_workers, nil, :class => "form-control", :value => nil, :disabled => true, :placeholder => "Currently Active: #{@delayed_job_worker_count}") %>
-          </div>
-        </div>
-
-        <div class="form-group">
           <%= label_tag(:global_rt_check, "Global RT Check", :class => "col-sm-2 control-label") %>
           <div class="col-sm-5">
             <!-- We need to use a hidden field here so we can send a "false" if the box isn't checked. -->

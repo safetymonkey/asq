@@ -15,13 +15,6 @@
         </div>
 
         <div class="form-group">
-          <%= label_tag(:environment, "Environment", :class => "col-sm-2 control-label") %>
-          <div class="col-sm-5">
-            <%= text_field_tag(:environment, nil, :class => "form-control", :placeholder => "SAD, SOM1, Dev, etc.",:disabled => !can?('Set', 'Setting'), :value => Settings.environment) %>
-          </div>
-        </div>
-
-        <div class="form-group">
           <%= label_tag(:result_limit, "Query result limit", :class => "col-sm-2 control-label") %>
           <div class="col-sm-5">
             <%= number_field_tag(:result_limit, nil, :class => "form-control",:disabled => !can?('Set', 'Setting'), :value => Settings.result_limit) %>

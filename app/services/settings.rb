@@ -61,9 +61,9 @@ class Settings
 
       {
         'dj_workers' => 0, 'vip_name' => '',
-        'hostname' => Rails.application.hostname, 'environemnt' => '',
-        'result_limit' => 5000, 'tsg_prefix' => '',
-        'global_rt_check' => true, 'max_db_timeout' => max_db_timeout,
+        'hostname' => Rails.application.hostname, 'result_limit' => 5000,
+        'tsg_prefix' => '', 'global_rt_check' => true,
+        'max_db_timeout' => max_db_timeout,
         'db_statement_timeout' => max_db_timeout
       }
     end

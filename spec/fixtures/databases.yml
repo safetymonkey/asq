@@ -21,11 +21,3 @@ test_mysql:
   username: asq
   db_name: test_data
   port: 5432
-
-live_pg:
-  name: live_pg
-  db_type: postgres
-  hostname: qa-busmonitordb.sea1.marchex.com
-  username: asq
-  db_name: asq
-  port: 5432

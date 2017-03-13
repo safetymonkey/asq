@@ -10,7 +10,7 @@
         <div class="form-group">
           <%= label_tag(:vip_name, "VIP Address", :class => "col-sm-2 control-label") %>
           <div class="col-sm-5">
-            <%= text_field_tag(:vip_name, nil, :class => "form-control", :placeholder => "asq.marchex.com",:disabled => !can?('Set', 'Setting') , :value => Settings.vip_name) %>
+            <%= text_field_tag(:vip_name, nil, :class => "form-control", :placeholder => "asq.example.com",:disabled => !can?('Set', 'Setting') , :value => Settings.vip_name) %>
           </div>
         </div>
 

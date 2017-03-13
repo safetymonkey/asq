@@ -107,7 +107,7 @@ RSpec.configure do |config|
 end
 
 # Accepts a symbol and a value
-# mock_settings(:my_url, 'http://goaway.marchex.com')
+# mock_settings(:my_url, 'http://goaway.example.com')
 def mock_setting(setting, value = nil)
   allow(Settings).to receive(:method_missing)
     .with(setting, any_args)

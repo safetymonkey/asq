@@ -67,10 +67,10 @@ class ZenossService
       {
         component: @asq.name,
         device: Settings.vip_name,
-        summary: "#{@asq.name} #{summary}",
-        severity: @asq.in_alert? ? 'Critical' : 'Clear',
-        evclasskey: 'ASQ',
-        evclass: '/ASQ'
+        summary:"#{@asq.name} #{summary}",
+        severity:@asq.in_alert? ? 'Critical' : 'Clear',
+        evclasskey:'ASQ',
+        evclass:'/Marchex/BEST/ASQ'
       }
     end
   end

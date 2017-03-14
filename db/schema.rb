@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(version: 20170314043404) do
   end
 
   create_table "autosftp_deliveries", force: :cascade do |t|
+    t.string  "prefix"
+    t.integer "asq_id"
+    t.index ["asq_id"], name: "index_autosftp_deliveries_on_asq_id", using: :btree
   end
 
   create_table "databases", force: :cascade do |t|

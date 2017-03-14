@@ -132,6 +132,7 @@ class AsqsController < ApplicationController
     @asq.build_file_options if @asq.file_options.nil?
     [@asq.email_deliveries,
      @asq.json_deliveries,
+     @asq.autosftp_deliveries,
      @asq.zenoss_deliveries,
      @asq.direct_ftp_deliveries,
      @asq.direct_sftp_deliveries].each do |delivery|
@@ -279,6 +280,7 @@ class AsqsController < ApplicationController
     p.merge!(schedule_params)
     p.merge!(email_delivery_params)
     p.merge!(json_delivery_params)
+    p.merge!(autosftp_delivery_params)
     p.merge!(direct_ftp_delivery_params)
     p.merge!(direct_sftp_delivery_params)
     p.merge!(file_option_params)
@@ -311,6 +313,12 @@ class AsqsController < ApplicationController
   def json_delivery_params
     params.require(:asq).permit(
       json_deliveries_attributes: [:id, :url, :_destroy]
+    )
+  end
+
+  def autosftp_delivery_params
+    params.require(:asq).permit(
+      autosftp_deliveries_attributes: [:id, :prefix, :_destroy]
     )
   end
 

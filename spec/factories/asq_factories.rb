@@ -20,4 +20,8 @@ FactoryGirl.define do
       status 'alert_new'
     end
   end
+
+  factory :autosftp_delivery do
+    asq { create(:asq) }
+  end
 end

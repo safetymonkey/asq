@@ -156,8 +156,8 @@ GEM
     jasmine_junitxml_formatter (1.2.0)
       jasmine (~> 2.4)
       nokogiri
-    jbuilder (2.6.1)
-      activesupport (>= 3.0.0, < 5.1)
+    jbuilder (2.6.3)
+      activesupport (>= 3.0.0, < 5.2)
       multi_json (~> 1.2)
     json (1.8.6)
     json-stream (0.2.1)
@@ -196,7 +196,7 @@ GEM
       request_store (~> 1.1)
     parser (2.4.0.0)
       ast (~> 2.2)
-    pg (0.19.0)
+    pg (0.20.0)
     phantomjs (2.1.1.0)
     poltergeist (1.13.0)
       capybara (~> 2.1)
@@ -326,7 +326,7 @@ GEM
     tilt (2.0.6)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.4)
+    uglifier (3.1.7)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -378,7 +378,7 @@ DEPENDENCIES
   gon (~> 6.1.0)
   jasmine
   jasmine_junitxml_formatter
-  jbuilder (= 2.6.1)
+  jbuilder (~> 2.6.1)
   json-stream
   ladle
   memory_test_fix (= 1.4.0)
@@ -388,7 +388,7 @@ DEPENDENCIES
   oj
   oj_mimic_json
   paper_trail (= 6.0.2)
-  pg (= 0.19.0)
+  pg (~> 0.20.0)
   phantomjs
   poltergeist
   rails (~> 5.0.2)
@@ -409,7 +409,7 @@ DEPENDENCIES
   simplecov-rcov
   sqlite3
   thin
-  uglifier (= 3.0.4)
+  uglifier (~> 3.1.7)
   will_paginate (= 3.1.5)
   will_paginate-bootstrap
   yaml_db

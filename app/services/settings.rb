@@ -61,8 +61,8 @@ class Settings
 
       {
         'vip_name' => '', 'hostname' => Rails.application.hostname,
-        'result_limit' => 5000, 'tsg_prefix' => '', 'global_rt_check' => true,
-        'max_db_timeout' => max_db_timeout,
+        'result_limit' => 5000, 'tsg_prefix' => '',
+        'related_tickets_check' => true, 'max_db_timeout' => max_db_timeout,
         'db_statement_timeout' => max_db_timeout
       }
     end

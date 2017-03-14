@@ -8,8 +8,6 @@
 
 Asq is a tool for the automated retrieval and delivery of datasets obtained via SQL query. Administrators manage a central set of database connections and authorized users may then use those connections to create monitors and reports. Monitors return results and go into alert only if certain criteria are met on the result set, whereas reports return results consistently. The queries can be run on individually set schedules and once a result set is returned those results can be delivered via email, FTP, or SFTP.
 
-[Demo](http://asq-monitoring.herokuapp.com)
-
 Dependencies
 ---
 

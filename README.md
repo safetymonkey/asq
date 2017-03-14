@@ -60,7 +60,7 @@ Code and documentation copyright 2011-2017 the [authors](https://github.com/twbs
 [build-badge]: https://circleci.com/gh/safetymonkey/asq.svg?style=shield&circle-token=c31d4d2749473c316cd4fc5d6160be680a1dc9be
 [build]: https://circleci.com/gh/safetymonkey/asq
 
-[license-badge]: images/license-badge.svg
+[license-badge]: https://img.shields.io/badge/License-MIT-green.svg
 [license]: https://github.com/fastlane/fastlane/blob/master/LICENSE
 
 [codecov-badge]: https://codecov.io/gh/safetymonkey/asq/branch/master/graph/badge.svg?token=gZGSAnU9hS

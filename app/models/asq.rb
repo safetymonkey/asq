@@ -140,7 +140,7 @@ class Asq < ActiveRecord::Base
     end
 
     store_results(message)
-    check_for_related_tickets(self) if Settings.global_rt_check == true
+    check_for_related_tickets(self) if Settings.related_tickets
     finish_refresh
   end
 
@@ -318,20 +318,26 @@ class Asq < ActiveRecord::Base
     asq.finish_refresh
   end
 
-  # When a asq is in error, check RT to see if there are any related tickets.
-  # I'm storing the result as JSON, but I'm letting the Postgres query do that
-  # conversion work for me.
+  # The original implementation of the related tickets check was very specific
+  # to Marchex, but instead of removing it altogether we've left empty hooks in
+  # so you can see how to implement ticket system checks yourself. The below
+  # code, while not commented, will never display unless you un-hide the
+  # related_tickets_check in views/settings/index.html.erb and change from the
+  # default value of false.
   def check_for_related_tickets(asq)
     if query_type == 'report'
       asq.related_tickets = nil
       return
     end
-    config = YAML.load_file('config/database.yml')['rt']
+    config = YAML.load_file('config/database.yml')['ticketing']
+    # Our ticketing system (RT) was backed by Postgres, but obviously you can
+    # change this up if needed.
     client = PG.connect(dbname: config['database'], host: config['host'],
                         user: config['username'], password: config['password'])
 
+    # Your query will likely vary; we once again left ours in as an example
     query = "select array_to_json(array_agg(row_to_json(t))) from (
-      SELECT id, owner FROM reporting.vw_rt_best_reports
+      SELECT id, owner FROM reporting.tickets
       WHERE status IN ('open', 'new')
       AND subject LIKE '%#{asq.name}'
       UNION ALL

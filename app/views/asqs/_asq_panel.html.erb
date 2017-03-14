@@ -135,7 +135,14 @@
     </div>
 
   <% end %>
-  <% if asq.related_tickets && Settings.global_rt_check == true %>
+
+  <%# The original implementation of the related tickets view was very specific
+    to Marchex, but instead of removing it altogether we've left empty hooks in
+    so you can see how to implement ticket system checks yourself. The below
+    code, while not commented, will never display unless you un-hide the
+    related_tickets check in views/settings/index.html.erb and change from the
+    default value of false. %>
+  <% if asq.related_tickets && Settings.related_tickets %>
     <div class="panel-footer">
       <small>
         <% if !asq.related_tickets.is_json? %>
@@ -143,7 +150,7 @@
         <% elsif asq.related_tickets.is_json? %>
           <strong>Active related tickets: </strong>
           <% JSON.parse(asq.related_tickets).each_with_index do |ticket,index| %>
-            <%= link_to "RT \##{ticket['id']} (#{ticket['owner']})", "https://rt.marchex.com/Ticket/Display.html?id=#{ticket['id']}", :target => "_blank" %><%= if index < JSON.parse(asq.related_tickets).length - 1 then ', ' end %>
+            <%= link_to "\##{ticket['id']} (#{ticket['owner']})", "http://ticketing.url/?id=#{ticket['id']}", :target => "_blank" %><%= if index < JSON.parse(asq.related_tickets).length - 1 then ', ' end %>
           <% end %>
         <% end %>
       </small>

@@ -30,12 +30,3 @@ production:
   pool: 5
   username: ##DatabaseUsername##
   password: ##DatabasePassword##
-
-rt:
-  host: rtdb-sec.sea.marchex.com
-  adapter: postgresql
-  encoding: unicode
-  database: rt
-  pool: 5
-  username: rt_user
-  password: !!!RT_PASSWORD!!!

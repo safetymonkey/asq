@@ -24,6 +24,7 @@ class Asq < ActiveRecord::Base
   has_many :monthly_schedules, dependent: :destroy
   has_many :deliveries, dependent: :destroy
   has_many :email_deliveries, dependent: :destroy
+  has_many :autosftp_deliveries, dependent: :destroy
   has_many :direct_ftp_deliveries, dependent: :destroy
   has_many :direct_sftp_deliveries, dependent: :destroy
   has_many :json_deliveries, dependent: :destroy
@@ -40,6 +41,8 @@ class Asq < ActiveRecord::Base
   accepts_nested_attributes_for :deliveries,
                                 reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :email_deliveries,
+                                reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :autosftp_deliveries,
                                 reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :direct_ftp_deliveries,
                                 reject_if: :all_blank, allow_destroy: true

@@ -1,0 +1,71 @@
+/site/asq/logs/error.log {
+                daily
+                rotate 30
+                compress
+                dateext
+    dateformat -%Y-%m-%d
+                delaycompress
+                missingok
+                notifempty
+                create 644 sqlmonitor sqlmonitor
+}
+
+/site/asq/logs/access.log {
+                daily
+                rotate 30
+                compress
+                dateext
+    dateformat -%Y-%m-%d
+                delaycompress
+                missingok
+                notifempty
+                create 644 sqlmonitor sqlmonitor
+}
+
+/site/asq/logs/apachectl-pc.log {
+                daily
+                rotate 30
+                compress
+                dateext
+    dateformat -%Y-%m-%d
+                delaycompress
+                missingok
+                notifempty
+                create 644 sqlmonitor sqlmonitor
+}
+
+/site/asq/log/production.log {
+                daily
+                rotate 30
+                compress
+                dateext
+    dateformat -%Y-%m-%d
+                delaycompress
+                missingok
+                notifempty
+                create 666 sqlmonitor sqlmonitor
+}
+
+/site/asq/log/dj.log {
+                daily
+                rotate 30
+                compress
+                dateext
+    dateformat -%Y-%m-%d
+                delaycompress
+                missingok
+                notifempty
+                create 666 sqlmonitor sqlmonitor
+}
+
+/site/asq/log/newrelic_agent.log {
+                daily
+                rotate 30
+                compress
+                dateext
+    dateformat -%Y-%m-%d
+                delaycompress
+                missingok
+                notifempty
+                create 644 sqlmonitor sqlmonitor
+}

@@ -55,6 +55,13 @@
           </div>
         </div> -->
 
+        <div class="form-group">
+          <%= label_tag(:autosftp_path, "AutoSFTP Path", :class => "col-sm-2 control-label") %>
+          <div class="col-sm-5">
+            <%= text_field_tag(:autosftp_path, nil, :class => "form-control", :disabled => !can?('Set', 'Setting'), :placeholder => "/path/to/auto-sftp", :value => Settings.autosftp_path) %>
+          </div>
+        </div>
+
         <% if can? :update, User %>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

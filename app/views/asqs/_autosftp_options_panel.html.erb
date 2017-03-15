@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 data-toggle="collapse" href="#collapseFtp" aria-expanded="<%= !collapse.to_s %>" aria-controls="collapseFtp" role="button" class="panel-title expand-panel-toggle">
+      <% dir = collapse ? 'right' : 'down' %>
+      <i class="indicator glyphicon glyphicon-chevron-<%= dir %>"></i> AutoSFTP Options
+    </h4>
+  </div>
+  <div id="collapseFtp" class="panel-collapse collapse <%= 'in' if !collapse %>">
+    <div class="panel-body">
+      <div class="form-group col-md-12">
+        <%= f.fields_for :autosftp_deliveries do |autosftp_delivery| %>
+          <div class = "add-file-options-group row">
+            <div class="form-group col-md-4">
+              <%= autosftp_delivery.label :name, "AutoSFTP Config File:" %>
+              <span class="glyphicon glyphicon-question-sign text-muted" data-toggle="modal" data-target="#autoSFTPModal"></span>
+            </div>
+            <div class="form-group col-md-8">
+              <%= autosftp_delivery.text_field :prefix, :class => "form-control", placeholder: "Name of deployed MCA AutoSFTP config file (prefixes file name)", disabled: !(can? :manage, User),
+                  'data-toggle' => 'tooltip', 'data-placement' => 'bottom', title: 'Tooltip text' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <%= render 'autosftp_help_modal' %>
+    </div>
+  </div>
+</div>

@@ -82,6 +82,8 @@
       <% end %>
       <%= render partial: 'direct_sftp_options_panel', locals: { f: f, collapse: @asq.direct_sftp_deliveries.first.new_record? } %>
 
+      <%= render partial: 'autosftp_options_panel', locals: { f: f, collapse: @asq.autosftp_deliveries.first.new_record? } %>
+
       <%= render partial: 'zenoss_delivery_panel', locals: { f: f, collapse: @asq.zenoss_deliveries.first.new_record? } %>
 
     <div class="actions">

@@ -1,0 +1,4 @@
+echo Starting Asq services...
+cd /site/sql-monitor &&
+sudo /etc/init.d/sql-monitor start &&
+sudo env PATH=/site/ruby/ruby-2.1/bin:/usr/bin:/bin:/site/marchex/bin RAILS_ENV=production bundle exec /site/sql-monitor/bin/delayed_job -n 7 start

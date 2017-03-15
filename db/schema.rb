@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306050857) do
+ActiveRecord::Schema.define(version: 20170314043404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,12 @@ ActiveRecord::Schema.define(version: 20170306050857) do
     t.string   "filename",                            limit: 255
     t.integer  "status",                                          default: 3
     t.boolean  "disabled"
+  end
+
+  create_table "autosftp_deliveries", force: :cascade do |t|
+    t.string  "prefix"
+    t.integer "asq_id"
+    t.index ["asq_id"], name: "index_autosftp_deliveries_on_asq_id", using: :btree
   end
 
   create_table "databases", force: :cascade do |t|

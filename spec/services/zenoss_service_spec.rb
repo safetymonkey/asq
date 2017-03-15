@@ -150,7 +150,7 @@ RSpec.describe ZenossService do
       end
 
       it 'posts the correct evclass value' do
-        expected_result = /"evclass":"\/ASQ"/
+        expected_result = /"evclass":"\/Marchex\/BEST\/ASQ"/
         expect(RestClient::Request).to receive(:execute)
           .with(hash_including(payload: expected_result))
         ZenossService.post(@asq)

@@ -1,4 +1,4 @@
-/site/sql-monitor/logs/error.log {
+/site/asq/logs/error.log {
                 daily
                 rotate 30
                 compress
@@ -10,7 +10,7 @@
                 create 644 sqlmonitor sqlmonitor
 }
 
-/site/sql-monitor/logs/access.log {
+/site/asq/logs/access.log {
                 daily
                 rotate 30
                 compress
@@ -22,7 +22,7 @@
                 create 644 sqlmonitor sqlmonitor
 }
 
-/site/sql-monitor/logs/apachectl-pc.log {
+/site/asq/logs/apachectl-pc.log {
                 daily
                 rotate 30
                 compress
@@ -34,7 +34,7 @@
                 create 644 sqlmonitor sqlmonitor
 }
 
-/site/sql-monitor/log/production.log {
+/site/asq/log/production.log {
                 daily
                 rotate 30
                 compress
@@ -46,7 +46,7 @@
                 create 666 sqlmonitor sqlmonitor
 }
 
-/site/sql-monitor/log/dj.log {
+/site/asq/log/dj.log {
                 daily
                 rotate 30
                 compress
@@ -58,7 +58,7 @@
                 create 666 sqlmonitor sqlmonitor
 }
 
-/site/sql-monitor/log/newrelic_agent.log {
+/site/asq/log/newrelic_agent.log {
                 daily
                 rotate 30
                 compress

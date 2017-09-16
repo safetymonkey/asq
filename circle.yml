@@ -6,7 +6,7 @@ dependencies:
     - sudo mkdir /opt/oracle
     - sudo chmod 777 /opt/oracle/
     - cd /opt/oracle
-    - curl -O https://www.dropbox.com/s/p4tnqhyjjtibsjl/instantclient_install.zip?dl=0
+    - curl -OL https://www.dropbox.com/s/p4tnqhyjjtibsjl/instantclient_install.zip
     - sudo unzip instantclient_install.zip
     - sudo unzip instantclient-basic-linux.x64-12.1.0.2.0.zip -d /opt/oracle
     - sudo unzip instantclient-sdk-linux.x64-12.1.0.2.0.zip -d /opt/oracle

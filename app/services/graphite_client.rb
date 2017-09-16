@@ -1,7 +1,31 @@
-# client to send metrics to graphite
+require 'graphite-api'
+
 class GraphiteClient
-  def initialize(host, port)
-    @host = host
-    @port = port
+  def initialize(host, port, prefix)
+    unless GraphiteClient.valid_metric_name? prefix
+      raise ArgumentError, 'Prefix is invalid'
+    end
+    @graphite = GraphiteAPI.new(
+      graphite: "#{host}:#{port}",
+      prefix: prefix
+    )
+  end
+
+  def add_metric(name, metric)
+    unless metric.is_a? Numeric
+      raise TypeError, 'Metric must be numeric'
+    end
+    unless GraphiteClient.valid_metric_name? name
+      raise ArgumentError, 'Name is invalid'
+    end
+    @graphite.metrics(name.to_s => metric)
+  end
+
+  def self.valid_metric_name?(raw_name)
+    names = raw_name.to_s.split('.')
+    names.each do |name|
+      return false unless name =~ /^[a-zA-Z0-9_]*$/
+    end
+    true
   end
 end

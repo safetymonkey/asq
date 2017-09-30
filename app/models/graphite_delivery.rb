@@ -18,7 +18,7 @@ class GraphiteDelivery < ActiveRecord::Base
     client = build_client
     result_hash.each do |result|
       result.each do |key, value|
-        client.add_metric(key, value)
+        client.add_metric(key, value.to_f)
       end
     end
   end

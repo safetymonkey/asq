@@ -12,7 +12,6 @@ class GraphiteClient
   end
 
   def add_metric(name, metric)
-    metric = metric.to_f
     unless metric.is_a? Numeric
       raise TypeError, "Metric '#{metric}' must be numeric"
     end

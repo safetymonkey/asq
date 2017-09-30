@@ -29,6 +29,7 @@ class Asq < ActiveRecord::Base
   has_many :json_deliveries, dependent: :destroy
   has_many :activities, as: :actable
   has_many :zenoss_deliveries, dependent: :destroy
+  has_many :graphite_deliveries, dependent: :destroy
 
   has_one :file_options, dependent: :destroy
 
@@ -48,6 +49,8 @@ class Asq < ActiveRecord::Base
   accepts_nested_attributes_for :json_deliveries,
                                 reject_if: :all_blank, allow_destroy: true
   accepts_nested_attributes_for :zenoss_deliveries,
+                                reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :graphite_deliveries,
                                 reject_if: :all_blank, allow_destroy: true
 
   # Validation macros

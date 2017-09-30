@@ -12,8 +12,9 @@ class GraphiteClient
   end
 
   def add_metric(name, metric)
+    metric = metric.to_f
     unless metric.is_a? Numeric
-      raise TypeError, 'Metric must be numeric'
+      raise TypeError, "Metric '#{metric}' must be numeric"
     end
     unless GraphiteClient.valid_metric_name? name
       raise ArgumentError, 'Name is invalid'

@@ -133,6 +133,7 @@ class AsqsController < ApplicationController
     [@asq.email_deliveries,
      @asq.json_deliveries,
      @asq.zenoss_deliveries,
+     @asq.graphite_deliveries,
      @asq.direct_ftp_deliveries,
      @asq.direct_sftp_deliveries].each do |delivery|
       delivery.build if delivery.empty?
@@ -283,6 +284,7 @@ class AsqsController < ApplicationController
     p.merge!(direct_sftp_delivery_params)
     p.merge!(file_option_params)
     p.merge!(zenoss_delivery_params)
+    p.merge!(graphite_delivery_params)
   end
 
   def asq_params
@@ -338,6 +340,12 @@ class AsqsController < ApplicationController
   def zenoss_delivery_params
     params.require(:asq).permit(
       zenoss_deliveries_attributes: [:id, :enabled, :_destroy]
+    )
+  end
+
+  def graphite_delivery_params
+    params.require(:asq).permit(
+      graphite_deliveries_attributes: [:id, :host, :port, :prefix, :_destroy]
     )
   end
 end

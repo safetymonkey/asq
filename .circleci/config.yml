@@ -3,6 +3,8 @@ jobs:
   build:
     environment:
       LD_LIBRARY_PATH: /opt/oracle/instantclient_12_1
+    machine:
+      enabled: true
     steps:
       - checkout
       - run:

@@ -1,41 +1,41 @@
 require 'rails_helper'
 RSpec.describe AsqsController, type: :controller do
   let(:asqs) do
-    [FactoryGirl.create(:asq,
+    [FactoryBot.create(:asq,
                         name: 'three',
                         query_type: 0,
                         status: 'alert_still',
                         disabled: false,
                         last_run: Time.now),
-     FactoryGirl.create(:asq,
+     FactoryBot.create(:asq,
                         name: 'five',
                         query_type: 0,
                         status: 'clear_new',
                         disabled: true,
                         last_run: Time.now - (60 * 10)),
-     FactoryGirl.create(:asq,
+     FactoryBot.create(:asq,
                         name: 'seven',
                         query_type: 1,
                         disabled: true,
                         last_run: Time.now - (60 * 12)),
-     FactoryGirl.create(:asq,
+     FactoryBot.create(:asq,
                         name: 'six',
                         query_type: 0,
                         status: 'clear_still',
                         disabled: true,
                         last_run: Time.now - (60 * 14)),
-     FactoryGirl.create(:asq,
+     FactoryBot.create(:asq,
                         name: 'four',
                         query_type: 1,
                         disabled: false,
                         last_run: Time.now - (60 * 16)),
-     FactoryGirl.create(:asq,
+     FactoryBot.create(:asq,
                         name: 'two',
                         query_type: 0,
                         status: 'alert_new',
                         disabled: false,
                         last_run: Time.now - 20),
-     FactoryGirl.create(:asq,
+     FactoryBot.create(:asq,
                         name: 'one',
                         query_type: 0,
                         status: 'operational_error',
@@ -84,7 +84,7 @@ RSpec.describe AsqsController, type: :controller do
       end
 
       it 'returns false if one of the asqs has not been run in 20 min' do
-        FactoryGirl.create(:asq,
+        FactoryBot.create(:asq,
                            name: 'one',
                            query_type: 0,
                            status: 'operational_error',
@@ -162,35 +162,35 @@ RSpec.describe AsqsController, type: :controller do
     # minimal gain.
     describe 'Asq status for Nagios' do
       it 'returns clear_new in JSON format' do
-        asq = FactoryGirl.create(:asq, status: 'clear_new')
+        asq = FactoryBot.create(:asq, status: 'clear_new')
         get :show, params: { format: :json, id: asq.id }
         parsed_json = JSON.parse(response.body)
         expect(parsed_json['status']).to eq('clear_new')
       end
 
       it 'returns clear_still in JSON format' do
-        asq = FactoryGirl.create(:asq, status: 'clear_still')
+        asq = FactoryBot.create(:asq, status: 'clear_still')
         get :show, params: { format: :json, id: asq.id }
         parsed_json = JSON.parse(response.body)
         expect(parsed_json['status']).to eq('clear_still')
       end
 
       it 'returns alert_new in JSON format' do
-        asq = FactoryGirl.create(:asq, status: 'alert_new')
+        asq = FactoryBot.create(:asq, status: 'alert_new')
         get :show, params: { format: :json, id: asq.id }
         parsed_json = JSON.parse(response.body)
         expect(parsed_json['status']).to eq('alert_new')
       end
 
       it 'returns alert_still in JSON format' do
-        asq = FactoryGirl.create(:asq, status: 'alert_still')
+        asq = FactoryBot.create(:asq, status: 'alert_still')
         get :show, params: { format: :json, id: asq.id }
         parsed_json = JSON.parse(response.body)
         expect(parsed_json['status']).to eq('alert_still')
       end
 
       it 'returns operational_error in JSON format' do
-        asq = FactoryGirl.create(:asq, status: 'operational_error')
+        asq = FactoryBot.create(:asq, status: 'operational_error')
         get :show, params: { format: :json, id: asq.id }
         parsed_json = JSON.parse(response.body)
         expect(parsed_json['status']).to eq('operational_error')

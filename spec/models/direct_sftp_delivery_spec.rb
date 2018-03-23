@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe DirectSftpDelivery do
-  let(:sftp_delivery) { FactoryGirl.create(:direct_sftp_delivery) }
+  let(:sftp_delivery) { FactoryBot.create(:direct_sftp_delivery) }
   let(:asq) { delivery.asq }
 
   before :each do

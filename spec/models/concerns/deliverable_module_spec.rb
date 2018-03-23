@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe DeliverableModule do
-  let(:asq) { FactoryGirl.build(:asq) }
+  let(:asq) { FactoryBot.build(:asq) }
   let(:dummy_class) do
     Class.new do
       include ActiveModel::Model
@@ -69,14 +69,14 @@ RSpec.describe DeliverableModule do
 
     context 'asq.query_type is report' do
       it 'calls deliver_report' do
-        our_asq = FactoryGirl.build(:asq)
+        our_asq = FactoryBot.build(:asq)
         dummy_instance.asq = our_asq
         expect(dummy_instance).to receive(:deliver_report)
         dummy_instance.deliver
       end
       context 'meets_sub_requirements? is false' do
         it 'does not call delivery_report' do
-          our_asq = FactoryGirl.build(:asq)
+          our_asq = FactoryBot.build(:asq)
           dummy_instance.asq = our_asq
           allow(dummy_instance).to receive(:meets_sub_requirements?)
             .and_return(false)
@@ -86,7 +86,7 @@ RSpec.describe DeliverableModule do
       end
       context 'when in operational_error' do
         it 'will not deliver' do
-          asq = FactoryGirl.build(:asq, status: 'operational_error')
+          asq = FactoryBot.build(:asq, status: 'operational_error')
           dummy_instance.asq = asq
           expect(dummy_instance).to_not receive(:deliver_report)
           dummy_instance.deliver
@@ -98,7 +98,7 @@ RSpec.describe DeliverableModule do
       context 'asq.in_alert? is true' do
         context 'asq.formerly_in_alert? is false' do
           it 'calls deliver_alarm' do
-            our_asq = FactoryGirl.build(
+            our_asq = FactoryBot.build(
               :asq,
               query_type: 'monitor',
               status: 'alert_new')
@@ -109,7 +109,7 @@ RSpec.describe DeliverableModule do
         end
         context 'and asq.deliver_on_every_refresh is true' do
           it 'calls deliver_alarm' do
-            our_asq = FactoryGirl.build(
+            our_asq = FactoryBot.build(
               :asq,
               query_type: 'monitor',
               status: 'alert_still',
@@ -125,7 +125,7 @@ RSpec.describe DeliverableModule do
       context 'asq.in_alert? is false' do
         context 'asq.deliver_on_all_clear is false' do
           it 'does not call deliver_alarm' do
-            our_asq = FactoryGirl.build(
+            our_asq = FactoryBot.build(
               :asq,
               query_type: 'monitor',
               status: 'clear_new',
@@ -137,7 +137,7 @@ RSpec.describe DeliverableModule do
         end
         context 'and asq.deliver_on_all_clear is true' do
           it 'calls deliver_alarm' do
-            our_asq = FactoryGirl.build(
+            our_asq = FactoryBot.build(
               :asq,
               query_type: 'monitor',
               status: 'clear_new',
@@ -148,7 +148,7 @@ RSpec.describe DeliverableModule do
           end
           context 'and asq.formerly_in_error? is false' do
             it 'does not deliver_alarm' do
-              our_asq = FactoryGirl.build(
+              our_asq = FactoryBot.build(
                 :asq,
                 query_type: 'monitor',
                 status: 'clear_still',
@@ -163,7 +163,7 @@ RSpec.describe DeliverableModule do
     end
     context 'while asq is in an unhandled state' do
       it 'throws and error' do
-        our_asq = FactoryGirl.build(
+        our_asq = FactoryBot.build(
           :asq,
           query_type: 'monitor',
           status: 'alert_still',

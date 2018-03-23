@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe RefreshController, type: :controller do
-  # This is the Asq we're going to use in all of our tests. Using FactoryGirl
+  # This is the Asq we're going to use in all of our tests. Using FactoryBot
   # means that we have an actual Asq object to use instead of having to
   # mock one out, property by property. Since we're creating it inside
   # our RSpec, we can 'inject' it into the controller by intercepting
   # method calls such as Asq.find_by_id and Asq.all.
 
-  let (:asq) { FactoryGirl.create(:asq) }
+  let (:asq) { FactoryBot.create(:asq) }
 
   describe 'GET #index/:id' do
     # If we want to confrim that the controller refreshes the correct Asq,

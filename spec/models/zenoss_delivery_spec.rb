@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ZenossDelivery, type: :model do
-  let(:delivery) { FactoryGirl.create(:zenoss_delivery) }
+  let(:delivery) { FactoryBot.create(:zenoss_delivery) }
   before(:example) do
     mock_setting(:zenoss_enabled, true)
     mock_setting(:zenoss_url, 'www.blah.com')

@@ -1,5 +1,5 @@
 require 'faker'
-FactoryGirl.define do
+FactoryBot.define do
   factory :asq do
     name Faker::Lorem.words.join(' ')
     description Faker::Lorem.sentences.join(' ')

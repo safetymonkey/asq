@@ -1,6 +1,6 @@
 require 'rails_helper'
 RSpec.describe ArchivedFile, type: :model do
-  let(:archived_file) { FactoryGirl.build(:archived_file, id: 99) }
+  let(:archived_file) { FactoryBot.build(:archived_file, id: 99) }
 
   before(:example) do
     allow(Dir).to receive(:mkdir)

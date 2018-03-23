@@ -2,7 +2,7 @@
 class DirectFtpDelivery < ActiveRecord::Base
   include DeliverableModule
   belongs_to :asq
-  crypt_keeper :password, encryptor: :aes_new, key: 'I think super long ' \
+  crypt_keeper :password, encryptor: :active_support, key: 'I think super long ' \
     'passwords tend to be the best ones, don\'t you?', salt: 'sodium chloride'
 
   after_create :create_delivery

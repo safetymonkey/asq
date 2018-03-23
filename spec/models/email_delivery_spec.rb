@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe EmailDelivery, type: :model do
-  let(:email_delivery) { FactoryGirl.create(:email_delivery) }
+  let(:email_delivery) { FactoryBot.create(:email_delivery) }
   let(:asq) { delivery.asq }
 
   before :each do

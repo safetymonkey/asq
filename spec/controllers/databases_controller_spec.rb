@@ -19,7 +19,7 @@ RSpec.describe DatabasesController, type: :controller do
   end
 
   describe 'GET #edit' do
-    let(:db) { FactoryGirl.create(:database) }
+    let(:db) { FactoryBot.create(:database) }
     it 'populates @db_types' do
       mock_response = 'stub'
       allow(controller)

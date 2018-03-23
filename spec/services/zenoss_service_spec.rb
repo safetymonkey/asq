@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ZenossService do
   before(:each) do
-    @asq = FactoryGirl.build(:asq)
+    @asq = FactoryBot.build(:asq)
     allow(RestClient::Request).to receive(:execute).and_return(response)
     allow(response).to receive(:code).and_return(200)
     # We have to allow any call to Settings.method_missing to return something,
@@ -104,7 +104,7 @@ RSpec.describe ZenossService do
       end
 
       it 'posts the current summary when the Asq is in alert' do
-        asq_in_alert = FactoryGirl.build(:asq_in_alert)
+        asq_in_alert = FactoryBot.build(:asq_in_alert)
         expected_result = /"summary":"#{asq_in_alert.name} is in alert."/
         expect(RestClient::Request).to receive(:execute)
           .with(hash_including(payload: expected_result))
@@ -135,7 +135,7 @@ RSpec.describe ZenossService do
       end
 
       it 'posts the current severity when the Asq is in alert' do
-        asq_in_alert = FactoryGirl.build(:asq_in_alert)
+        asq_in_alert = FactoryBot.build(:asq_in_alert)
         expected_result = /"severity":"Critical"/
         expect(RestClient::Request).to receive(:execute)
           .with(hash_including(payload: expected_result))

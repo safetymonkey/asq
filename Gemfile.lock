@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/jmazzi/crypt_keeper.git
+  remote: https://github.com/jmazzi/crypt_keeper
   revision: 05bfb3b3af2e6ff4d47fe9814e6f8910873929dc
   specs:
     crypt_keeper (2.0.0.rc1)
@@ -156,7 +156,7 @@ GEM
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
-    json (1.8.6)
+    json (2.1.0)
     json-stream (0.2.1)
     ladle (1.0.1)
       open4 (~> 1.0)
@@ -245,7 +245,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
-    rdoc (4.3.0)
+    rdoc (6.0.2)
     redcarpet (3.4.0)
     request_store (1.4.1)
       rack (>= 1.4)
@@ -305,9 +305,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sdoc (0.4.2)
-      json (~> 1.7, >= 1.7.7)
-      rdoc (~> 4.0)
+    sdoc (1.0.0)
+      rdoc (>= 5.0)
     selenium-webdriver (3.11.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
@@ -411,7 +410,7 @@ DEPENDENCIES
   rubocop
   rubocop-checkstyle_formatter
   sass-rails (~> 5.0.6)
-  sdoc (~> 0.4.0)
+  sdoc (~> 1.0.0)
   selenium-webdriver
   simplecov
   simplecov-rcov

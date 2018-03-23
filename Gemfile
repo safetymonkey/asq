@@ -16,7 +16,7 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'browser'
 gem 'cancancan', '2.1.3' # Changed this from cancan, may need to roll back
 gem 'coffee-rails', '~> 4.2.1'
-gem 'crypt_keeper', github: 'jmazzi/crypt_keeper'
+gem 'crypt_keeper', git: 'https://github.com/jmazzi/crypt_keeper'
 gem 'daemons'
 gem 'delayed_job_active_record', '~> 4.1.2'
 gem 'devise', '~> 4.4.3'
@@ -44,7 +44,7 @@ gem 'will_paginate', '~> 3.1.5'
 gem 'will_paginate-bootstrap'
 
 group :doc do
-  gem 'sdoc', '~> 0.4.0'
+  gem 'sdoc', '~> 1.0.0'
 end
 
 group :development do

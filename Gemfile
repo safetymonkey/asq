@@ -1,26 +1,26 @@
 source 'http://rubygems.org'
-ruby '2.3.3'
+ruby '2.3.7'
 require 'yaml'
 
 features = YAML.load_file(File.expand_path('../config/features.yml', __FILE__))
 
-gem 'ruby-oci8', '2.2.3' if features['oracle_db']
-gem 'mysql2', '0.4.5' if features['mysql_db']
+gem 'ruby-oci8', '~> 2.2.3' if features['oracle_db']
+gem 'mysql2', '~> 0.4.5' if features['mysql_db']
 
 gem 'devise_ldap_authenticatable', '~> 0.8.5'
 
-gem 'acts-as-taggable-on', '5.0.0'
+gem 'acts-as-taggable-on', '~> 5.0.0'
 gem 'autoprefixer-rails', '~> 8.2.0'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '~> 3.3.7'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'browser'
 gem 'cancancan', '2.1.3' # Changed this from cancan, may need to roll back
 gem 'coffee-rails', '~> 4.2.1'
-gem 'crypt_keeper', git: 'https://github.com/jmazzi/crypt_keeper'
+gem 'crypt_keeper', '~> 2.0.0.rc2'
 gem 'daemons'
 gem 'delayed_job_active_record', '~> 4.1.2'
 gem 'devise', '~> 4.4.3'
-gem 'execjs', '2.7.0'
+gem 'execjs', '~> 2.7.0'
 gem 'fun_sftp'
 gem 'gon', '~> 6.2.0'
 gem 'jbuilder', '~> 2.7.0'
@@ -34,7 +34,6 @@ gem 'paper_trail', '~> 8.1.2'
 gem 'pg', '~> 1.0.0'
 gem 'rails', '~> 5.1.5'
 gem 'redcarpet', '~> 3.4.0'
-# gem 'rename', '1.0.2'
 gem 'responders', '~> 2.4.0'
 gem 'rest-client', '~> 2.0.2'
 gem 'roadie-rails', '~> 1.2.1'
@@ -50,7 +49,6 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
-  # gem 'quiet_assets', '1.1.0'
   gem 'rails_layout'
   gem 'rails_real_favicon'
   gem 'thin'

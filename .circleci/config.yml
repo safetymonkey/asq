@@ -21,6 +21,7 @@ jobs:
       - run:
           name: oracle_instantclient
           command: |
+            mv config/features.yml.circleci config/features.yml
             sudo apt-get install libaio1
             sudo mkdir /opt/oracle
             sudo chmod 777 /opt/oracle/
@@ -33,7 +34,6 @@ jobs:
             cd /opt/oracle/instantclient_12_1 && sudo ln -s libclntsh.so.12.1 libclntsh.so
             sudo mkdir /site
             sudo chmod 777 /site
-            mv config/features.yml.circleci config/features.yml
       # Run rspec in parallel
       - run:
           name: Run rspec in parallel

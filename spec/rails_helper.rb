@@ -47,7 +47,7 @@ RSpec.configure do |config|
     config.before(:suite) do
       @ldap_server =
         Ladle::Server
-        .new(quiet: true, ldif: 'spec/features/test_ldap_dir.ldif').start
+        .new(quiet: true, ldif: "#{::Rails.root}/spec/features/test_ldap_dir.ldif").start
     end
 
     config.after(:suite) do

@@ -7,12 +7,6 @@ jobs:
       - image: circleci/ruby:2.3-node # ...with this image as the primary container; this is where all `steps` will run
         environment: # environment variables for primary container
           LD_LIBRARY_PATH: /opt/oracle/instantclient_12_1
-          # BUNDLE_JOBS: 3
-          # BUNDLE_RETRY: 3
-          # BUNDLE_PATH: vendor/bundle
-          # PGHOST: 127.0.0.1
-          # PGUSER: circleci-demo-ruby
-          # RAILS_ENV: test
       - image: circleci/postgres:9.5-alpine # database image
         environment:
           POSTGRES_USER: asq
@@ -38,6 +32,16 @@ jobs:
             cd /opt/oracle/instantclient_12_1 && sudo ln -s libclntsh.so.12.1 libclntsh.so
             sudo mkdir /site
             sudo chmod 777 /site
+      # TODO: Look at eiter caching phantomjs so we don't download it every time
+      # Alternately, we should just build a Docker image w/ a stable build env.
+      - run:
+          name: Install phantomjs
+          command: |
+            if ! [ $(which phantomjs) ]; then
+              sudo curl --output /usr/local/bin/phantomjs https://s3.amazonaws.com/circle-downloads/phantomjs-2.1.1
+            fi
+
+            sudo chmod ugo+x /usr/local/bin/phantomjs
       - run:
           name: Bundle Install
           command: bundle check || bundle install

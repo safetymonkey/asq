@@ -3,7 +3,7 @@
 
 [![CircleCI][build-badge]][build]
 [![Codecov][codecov-badge]][codecov]
-[![Dependency Status][gemnasium-badge]][gemnasium]
+[![Dependency Status][depfu-badge]][depfu]
 [![License][license-badge]][license]
 
 Asq is a tool for the automated retrieval and delivery of datasets obtained via SQL query. Administrators manage a central set of database connections and authorized users may then use those connections to create monitors and reports. Monitors return results and go into alert only if certain criteria are met on the result set, whereas reports return results consistently. The queries can be run on individually set schedules and once a result set is returned those results can be delivered via email, FTP, or SFTP.
@@ -64,6 +64,5 @@ Code and documentation copyright 2011-2017 the [authors](https://github.com/twbs
 [codecov-badge]: https://codecov.io/gh/safetymonkey/asq/branch/master/graph/badge.svg?token=gZGSAnU9hS
 [codecov]: https://codecov.io/gh/safetymonkey/asq
 
-[gemnasium-badge]: https://gemnasium.com/badges/github.com/safetymonkey/asq.svg
-[gemnasium]: https://gemnasium.com/github.com/safetymonkey/asq
-
+[depfu-badge]: https://badges.depfu.com/badges/cfc5bf4e70b7dc7ad051a2e566b5c044/overview.svg
+[depfu]: https://depfu.com/github/safetymonkey/asq?project=Bundler

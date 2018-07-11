@@ -14,6 +14,10 @@ jobs:
           # PGUSER: circleci-demo-ruby
           # RAILS_ENV: test
       - image: circleci/postgres:9.5-alpine # database image
+        environment:
+          POSTGRES_USER: asq
+          POSTGRES_DB: asq_test
+          POSTGRES_PASSWORD: password
     environment:
       # LD_LIBRARY_PATH: /opt/oracle/instantclient_12_1
     steps:

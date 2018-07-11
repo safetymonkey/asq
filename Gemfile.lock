@@ -200,6 +200,7 @@ GEM
       websocket-driver (>= 0.2.0)
     powerpack (0.1.2)
     public_suffix (3.0.2)
+    puma (3.11.4)
     rack (2.0.5)
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
@@ -395,6 +396,7 @@ DEPENDENCIES
   pg (~> 1.0.0)
   phantomjs
   poltergeist
+  puma
   rails (~> 5.1.5)
   rails-controller-testing
   rails_layout

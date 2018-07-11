@@ -12,8 +12,6 @@ jobs:
           POSTGRES_USER: asq
           POSTGRES_DB: asq_test
           POSTGRES_PASSWORD: password
-    environment:
-      # LD_LIBRARY_PATH: /opt/oracle/instantclient_12_1
     steps:
       - checkout
       - run:

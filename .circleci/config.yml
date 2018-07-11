@@ -34,6 +34,9 @@ jobs:
             cd /opt/oracle/instantclient_12_1 && sudo ln -s libclntsh.so.12.1 libclntsh.so
             sudo mkdir /site
             sudo chmod 777 /site
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
       # Run rspec in parallel
       - run:
           name: Run rspec in parallel

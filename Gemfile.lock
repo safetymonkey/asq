@@ -131,7 +131,7 @@ GEM
       net-sftp
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    gon (6.2.0)
+    gon (6.2.1)
       actionpack (>= 3.0)
       multi_json
       request_store (>= 1.0)

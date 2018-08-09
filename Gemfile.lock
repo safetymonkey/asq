@@ -140,12 +140,12 @@ GEM
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.1)
-    jasmine (3.1.0)
-      jasmine-core (= 3.1.0)
+    jasmine (3.2.0)
+      jasmine-core (= 3.2.0)
       phantomjs
       rack (>= 1.2.1)
       rake
-    jasmine-core (3.1.0)
+    jasmine-core (3.2.0)
     jasmine_junitxml_formatter (3.0.0)
       jasmine (~> 3.0)
       nokogiri

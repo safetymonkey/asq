@@ -18,6 +18,7 @@ class GraphiteClient
     unless GraphiteClient.valid_metric_name? name
       raise ArgumentError, 'Name is invalid'
     end
+    Rails.logger.info("Sending '#{name}': #{metric} to Graphite")
     @graphite.metrics(name.to_s => metric)
   end
 

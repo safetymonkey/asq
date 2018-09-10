@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :settings do
     { primary_host: 'qa_host' }
   end

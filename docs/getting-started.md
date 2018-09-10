@@ -34,6 +34,7 @@ $ bundle exec rspec
 
 ### Start the application
 You'll need to start the primary front-end application as well as the back-end Delayed Job workers
-```
+```sh
 $ bundle exec rails start
 $ bin/delayed_job start -n <number of workers you want to start>
+```

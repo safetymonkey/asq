@@ -3,13 +3,13 @@ require 'rails_helper'
 RSpec.describe Delivery, type: :model do
   let(:delivery) { Delivery.new }
   let(:deliverable) { double }
-  let(:asq) { FactoryGirl.create(:asq) }
+  let(:asq) { FactoryBot.create(:asq) }
 
   describe '.deliver' do
     before :example do
       @delivery = Delivery.new
       @deliverable = double
-      @asq = FactoryGirl.build(:asq)
+      @asq = FactoryBot.build(:asq)
       @activity = double
 
       allow(@delivery).to receive(:deliverable).and_return(@deliverable)

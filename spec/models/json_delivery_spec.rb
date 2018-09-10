@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe JsonDelivery, type: :model do
   # We create a json_delivery object before each test. "Let" is preferred
   # here because of subtle reasons - including the fact that we're creating
-  # the object with just a single FactoryGirl call. You can checkout the
-  # Factory Girl config file to see what a FactoryGirl-created
+  # the object with just a single FactoryBot call. You can checkout the
+  # Factory Girl config file to see what a FactoryBot-created
   # json_delivery object looks like.
-  let(:json_delivery) { FactoryGirl.create(:json_delivery) }
+  let(:json_delivery) { FactoryBot.create(:json_delivery) }
 
   it "doesn't deliver if the URL is blank" do
     json_delivery.url = ''

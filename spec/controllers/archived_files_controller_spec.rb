@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe ArchivedFilesController, type: :controller do
   describe '.show' do
-    let(:file) { FactoryGirl.create(:archived_file) }
+    let(:file) { FactoryBot.create(:archived_file) }
     let(:send_options) do
       { type: 'text/csv; charset=utf-8; header=present',
         disposition: "attachment; filename=\"#{file.name}\"" }

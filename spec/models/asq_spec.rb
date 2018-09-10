@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Asq, type: :model do
-  let(:asq_no_file_options) { FactoryGirl.create(:asq) }
+  let(:asq_no_file_options) { FactoryBot.create(:asq) }
   before (:each) do
     Delayed::Worker.delay_jobs = false
   end
@@ -9,7 +9,7 @@ RSpec.describe Asq, type: :model do
 
     describe 'accurately descirbes its current state' do
       context 'when asq.status == alert_new' do
-        asq = FactoryGirl.build(:asq, status: 'alert_new')
+        asq = FactoryBot.build(:asq, status: 'alert_new')
         it 'is in alert' do
           expect(asq.in_alert?).to be true
         end
@@ -19,7 +19,7 @@ RSpec.describe Asq, type: :model do
       end
 
       context 'when .status == alert_still' do
-        asq = FactoryGirl.build(:asq, status: 'alert_still')
+        asq = FactoryBot.build(:asq, status: 'alert_still')
         it 'is in alert' do
           expect(asq.in_alert?).to be true
         end
@@ -29,7 +29,7 @@ RSpec.describe Asq, type: :model do
       end
 
       context 'when .status = clear_new' do
-        asq = FactoryGirl.build(:asq, status: 'clear_new')
+        asq = FactoryBot.build(:asq, status: 'clear_new')
         it 'is not in alert' do
           expect(asq.in_alert?).to be false
         end
@@ -39,7 +39,7 @@ RSpec.describe Asq, type: :model do
       end
 
       context 'when .status = clear_still' do
-        asq = FactoryGirl.build(:asq)
+        asq = FactoryBot.build(:asq)
         it 'is not in alert' do
           expect(asq.in_alert?).to be false
         end
@@ -54,7 +54,7 @@ RSpec.describe Asq, type: :model do
 
     describe 'accurately sets current status' do
       context 'alerting from clear_still' do
-        asq_clear_still = FactoryGirl.build(:asq, status: 'clear_still')
+        asq_clear_still = FactoryBot.build(:asq, status: 'clear_still')
         it 'sets status to alert new with .alert' do
           asq_clear_still.alert('default message')
           expect(asq_clear_still.status).to eq('alert_new')
@@ -66,7 +66,7 @@ RSpec.describe Asq, type: :model do
       end
 
       context 'when clearing from alert_still' do
-        asq_in_alert = FactoryGirl.build(:asq, status: 'alert_still')
+        asq_in_alert = FactoryBot.build(:asq, status: 'alert_still')
         it '.clear sets status to clear_new' do
           asq_in_alert.clear
           expect(asq_in_alert.status).to eq('clear_new')
@@ -78,7 +78,7 @@ RSpec.describe Asq, type: :model do
       end
 
       context 'when setting to operational_error' do
-        asq = FactoryGirl.build(:asq, status: 'clear_still')
+        asq = FactoryBot.build(:asq, status: 'clear_still')
         it 'calling operational_error sets state = operational_error' do
           asq.operational_error
           expect(asq.status).to eq('operational_error')
@@ -95,8 +95,8 @@ RSpec.describe Asq, type: :model do
     modified_on = 1.day.ago
     asq_params = { modified_on: modified_on, created_on: 5.days.ago,
                    last_run: 3.days.ago }
-    asq = FactoryGirl.build(:asq, asq_params)
-    schedule = FactoryGirl.build(:weekly_schedule)
+    asq = FactoryBot.build(:asq, asq_params)
+    schedule = FactoryBot.build(:weekly_schedule)
     allow(asq).to receive(:schedules).and_return([schedule])
     expect(schedule).to receive(:get_scheduled_date)
                             .with(modified_on).and_return(modified_on)
@@ -129,7 +129,7 @@ RSpec.describe Asq, type: :model do
   describe '.log' do
     context 'when Asq goes into operational_error' do
       it '.log captures the error message' do
-        asq = FactoryGirl.create(:asq)
+        asq = FactoryBot.create(:asq)
         expect(asq).to receive(:log)
         asq.operational_error
       end

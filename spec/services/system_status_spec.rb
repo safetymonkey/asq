@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe SystemStatus do
   before(:each) do
-    FactoryGirl.create(:asq, id: 1, last_run: 1.minute.ago)
+    FactoryBot.create(:asq, id: 1, last_run: 1.minute.ago)
     allow(SystemStatus).to receive(:active_dj_workers).and_return(2)
     allow(Dir).to receive(:glob).and_return(['delayed_job.1', 'delayed_job.2'])
     mock_setting(:last_host_check, 'OK')

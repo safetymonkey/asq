@@ -17,7 +17,7 @@ RSpec.describe 'asq management', type: :feature do
     end
 
     it 'can view asqs' do
-      asq = FactoryGirl.create(:asq)
+      asq = FactoryBot.create(:asq)
       visit 'tags'
       expect(page).to have_content(asq.name)
     end

@@ -46,7 +46,7 @@ FactoryBot.define do
   end
 end
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :graphite_delivery do
     host Faker::Internet.domain_name
     port '1234'

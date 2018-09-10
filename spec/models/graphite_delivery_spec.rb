@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 RSpec.describe GraphiteDelivery do
-  let(:graphite_delivery) { FactoryGirl.create(:graphite_delivery) }
+  let(:graphite_delivery) { FactoryBot.create(:graphite_delivery) }
 
   before :each do
     graphite_delivery

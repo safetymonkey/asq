@@ -9,9 +9,10 @@ require 'capybara/poltergeist'
 require 'devise'
 
 Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, js_errors: false)
+  Capybara::Poltergeist::Driver.new(app, :phantomjs_logger => File.open(File::NULL, "w"), js_errors: false)
 end
 
+Capybara.server = :puma, { Silent: true }
 Capybara.javascript_driver = :poltergeist
 
 # Add additional requires below this line. Rails is not loaded until this point!

@@ -76,7 +76,7 @@ GEM
       ci_reporter (~> 2.0)
       rspec (>= 2.14, < 4)
     cliver (0.3.2)
-    codecov (0.1.10)
+    codecov (0.1.13)
       json
       simplecov
       url

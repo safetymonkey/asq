@@ -45,3 +45,12 @@ FactoryBot.define do
     enabled { true }
   end
 end
+
+FactoryBot.define do
+  factory :graphite_delivery do
+    host { Faker::Internet.domain_name }
+    port { '1234' }
+    prefix { Faker::Lorem.words(2).join('.') }
+    asq { build(:asq, query_type: 'report') }
+  end
+end

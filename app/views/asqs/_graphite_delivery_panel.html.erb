@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 data-toggle="collapse" href="#collapseGraphite" aria-expanded="<%= !collapse.to_s %>" aria-controls="collapseGraphite" role="button" class="panel-title expand-panel-toggle">
+      <% dir = collapse ? 'right' : 'down' %>
+      <i class="indicator glyphicon glyphicon-chevron-<%= dir %>"></i> Graphite Options
+    </h4>
+  </div>
+  <div id="collapseGraphite" class="panel-collapse collapse <%= 'in' if !collapse %>">
+    <div class="panel-body">
+      <div class="form-group col-md-12">
+        <%= f.fields_for :graphite_deliveries do |graphite_delivery| %>
+          <div class = "add-file-options-group row">
+
+            <div class="form-group col-md-6">
+              <%= graphite_delivery.label :host, "Host:" %>
+              <%= graphite_delivery.text_field :host, :class => "form-control testable", placeholder: "e.g. graphite.hostname.com" %>
+            </div>
+
+            <div class="form-group col-md-1">
+              <%= graphite_delivery.label :port, "Port:" %>
+              <%= graphite_delivery.text_field :port, :class => "form-control testable", placeholder: "2003" %>
+            </div>
+
+            <div class="form-group col-md-5">
+              <%= graphite_delivery.label :host, "Prefix:" %>
+              <%= graphite_delivery.text_field :prefix, :class => "form-control testable", placeholder: "" %>
+            </div>
+
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

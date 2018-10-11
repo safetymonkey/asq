@@ -79,10 +79,14 @@
       <%= render partial: 'json_options_panel', locals: { f: f, collapse: @asq.json_deliveries.first.new_record? } %>
 
       <%= render partial: 'direct_ftp_options_panel', locals: { f: f, collapse: @asq.direct_ftp_deliveries.first.new_record? } %>
-      <% end %>
+      
       <%= render partial: 'direct_sftp_options_panel', locals: { f: f, collapse: @asq.direct_sftp_deliveries.first.new_record? } %>
 
+      <%= render partial: 'graphite_delivery_panel', locals: { f: f, collapse: @asq.graphite_deliveries.first.new_record? } %>
+
       <%= render partial: 'zenoss_delivery_panel', locals: { f: f, collapse: @asq.zenoss_deliveries.first.new_record? } %>
+
+      <% end %>
 
     <div class="actions">
       <%= button_tag( :class => "btn btn-primary save allow-while-disabled") do %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170306050857) do
+ActiveRecord::Schema.define(version: 20170929194112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,6 +155,16 @@ ActiveRecord::Schema.define(version: 20170306050857) do
     t.datetime "updated_at"
     t.string   "sub_character",     limit: 255, default: ""
     t.index ["asq_id"], name: "index_file_options_on_asq_id", using: :btree
+  end
+
+  create_table "graphite_deliveries", force: :cascade do |t|
+    t.integer  "asq_id"
+    t.string   "host"
+    t.string   "port"
+    t.string   "prefix"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asq_id"], name: "index_graphite_deliveries_on_asq_id", using: :btree
   end
 
   create_table "json_deliveries", force: :cascade do |t|

@@ -14,10 +14,10 @@ Capybara.register_driver :poltergeist do |app|
     phantomjs_logger: File.open(File::NULL, 'w'),
     js_errors: false
   }
-
   Capybara::Poltergeist::Driver.new(app, options)
 end
 
+Capybara.server = :puma, { Silent: true }
 Capybara.javascript_driver = :poltergeist
 Capybara.server = :puma, { Silent: true }
 

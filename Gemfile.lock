@@ -160,7 +160,7 @@ GEM
     json-stream (0.2.1)
     ladle (1.0.1)
       open4 (~> 1.0)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)

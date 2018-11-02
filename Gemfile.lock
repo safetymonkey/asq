@@ -429,7 +429,7 @@ DEPENDENCIES
   yaml_db
 
 RUBY VERSION
-   ruby 2.3.7p456
+   ruby 2.3.8p459
 
 BUNDLED WITH
-   1.16.2
+   1.17.1

@@ -91,7 +91,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.4)
     crass (1.0.4)
-    crypt_keeper (2.0.0.rc2)
+    crypt_keeper (2.0.1)
       activerecord (>= 4.2, < 5.3)
       activesupport (>= 4.2, < 5.3)
     css_parser (1.6.0)

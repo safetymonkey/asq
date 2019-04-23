@@ -11,7 +11,7 @@ gem 'devise_ldap_authenticatable', '~> 0.8.5'
 
 gem 'acts-as-taggable-on', '~> 5.0.0'
 gem 'autoprefixer-rails', '~> 8.2.0'
-gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'browser'
 gem 'cancancan', '2.1.3' # Changed this from cancan, may need to roll back

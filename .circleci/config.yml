@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker: # run the steps with Docker
-      - image: circleci/ruby:2.3-node # ...with this image as the primary container; this is where all `steps` will run
+      - image: circleci/ruby:2.6-node # ...with this image as the primary container; this is where all `steps` will run
         environment: # environment variables for primary container
           LD_LIBRARY_PATH: /opt/oracle/instantclient_12_1
       - image: circleci/postgres:9.5-alpine # database image

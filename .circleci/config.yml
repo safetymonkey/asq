@@ -1,6 +1,5 @@
 version: 2
 
-
 jobs:
   build:
     docker: # run the steps with Docker
@@ -40,6 +39,11 @@ jobs:
             fi
 
             sudo chmod ugo+x /usr/local/bin/phantomjs
+      - run:
+          name: install dependencies
+          command: |
+            gem update --system
+            gem install bundler
       - run:
           name: Bundle Install
           command: bundle check || bundle install

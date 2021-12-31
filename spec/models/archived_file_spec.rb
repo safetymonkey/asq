@@ -25,7 +25,7 @@ RSpec.describe ArchivedFile, type: :model do
     context 'while archive folder does exist' do
       before(:example) do
         @file = double
-        @content = Faker::Lorem.words(20).join(' ')
+        @content = Faker::Lorem.words(number: 20).join(' ')
         @path = archived_file.full_path
         allow(File).to receive(:open).with(@path, 'w:UTF-8').and_yield(@file)
         allow(@file).to receive(:write)
@@ -79,7 +79,7 @@ RSpec.describe ArchivedFile, type: :model do
   describe '.create' do
     before(:example) do
       @file = double
-      @content = Faker::Lorem.words(20).join(' ')
+      @content = Faker::Lorem.words(number: 20).join(' ')
       allow(File).to receive(:open).and_yield(@file)
       allow(@file).to receive(:write)
     end

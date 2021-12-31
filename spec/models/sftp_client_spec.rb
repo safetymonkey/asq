@@ -77,7 +77,7 @@ RSpec.describe SftpClient do
 
   describe '.can_write_files?' do
     before(:each) do
-      file_name = Faker::Lorem.characters(8)
+      file_name = Faker::Lorem.characters(number: 8)
       allow(SecureRandom).to receive(:hex).and_return(file_name)
       allow(sftp_client_gem).to receive(:upload!)
       allow(sftp_client_gem).to receive(:rm)

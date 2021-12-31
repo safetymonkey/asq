@@ -32,8 +32,8 @@ gem 'net-ssh'
 gem 'oj', '~> 3.5.0'
 gem 'oj_mimic_json'
 gem 'paper_trail', '~> 8.1.2'
-gem 'pg', '~> 1.0.0'
-gem 'puma'
+gem 'pg', '~> 1.2.3'
+gem 'puma', '~> 5.5.2'
 gem 'rails', '~> 5.1.5'
 gem 'redcarpet', '~> 3.4.0'
 gem 'responders', '~> 2.4.0'
@@ -53,7 +53,7 @@ group :development do
   gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
   gem 'rails_layout'
   gem 'rails_real_favicon'
-  gem 'thin'
+  gem 'thin', '~> 1.8.1'
   gem 'yaml_db'
 end
 
@@ -71,7 +71,6 @@ end
 
 group :test do
   gem 'capybara'
-  gem 'codecov', require: false
   gem 'database_cleaner'
   gem 'jasmine_junitxml_formatter'
   gem 'ladle'

@@ -399,7 +399,7 @@ DEPENDENCIES
   devise_ldap_authenticatable (~> 0.8.5)
   execjs (~> 2.7.0)
   factory_bot_rails
-  faker
+  faker (~> 2.19.0)
   fun_sftp
   gon (~> 6.2.0)
   graphite-api (= 0.1.8)

@@ -9,7 +9,7 @@ RSpec.describe ApplicationController do
 
   describe 'debug_params' do
     it 'filters passwords' do
-      get :index, params: { user: { name: Faker::Cat.name, password: Faker::Crypto.md5 } }
+      get :index, params: { user: { name: Faker::Creature::Cat.name, password: Faker::Crypto.md5 } }
       expect(controller.debug_params['user']['password']).to eq('[FILTERED]')
     end
   end

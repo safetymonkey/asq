@@ -7,6 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/poltergeist'
 require 'devise'
+require 'faker'
 
 Capybara.register_driver :poltergeist do |app|
   options = {

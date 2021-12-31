@@ -61,7 +61,7 @@ group :development, :test do
   gem 'ci_reporter'
   gem 'ci_reporter_rspec'
   gem 'factory_bot_rails'
-  gem 'faker'
+  gem 'faker', '~> 2.19.0'
   gem 'jasmine'
   gem 'phantomjs'
   gem 'rspec-rails', '~> 3.1'

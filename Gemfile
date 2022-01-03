@@ -9,6 +9,11 @@ gem 'mysql2', '~> 0.4.5' if features['mysql_db']
 
 gem 'devise_ldap_authenticatable', '~> 0.8.5'
 
+gem "actionpack", "5.2.6"
+gem "activerecord", "5.2.6"
+gem "activesupport", "5.2.6"
+gem "railties", "5.2.6"
+
 gem 'acts-as-taggable-on', '~> 5.0.0'
 gem 'autoprefixer-rails', '~> 8.2.0'
 gem 'bootstrap-sass', '~> 3.4.1'
@@ -31,14 +36,14 @@ gem 'net-sftp'
 gem 'net-ssh'
 gem 'oj', '~> 3.5.0'
 gem 'oj_mimic_json'
-gem 'paper_trail', '~> 8.1.2'
+gem 'paper_trail', '~> 12.1.0'
 gem 'pg', '~> 1.2.3'
 gem 'puma', '~> 5.5.2'
-gem 'rails', '~> 5.1.5'
+gem 'rails', '5.2.6'
 gem 'redcarpet', '~> 3.4.0'
 gem 'responders', '~> 2.4.0'
 gem 'rest-client', '~> 2.0.2'
-gem 'roadie-rails', '~> 1.2.1'
+gem 'roadie-rails', '~> 2.3.0'
 gem 'sass-rails', '~> 5.0.6'
 gem 'uglifier', '~> 4.1.8'
 gem 'will_paginate', '~> 3.1.5'
@@ -52,15 +57,15 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
   gem 'rails_layout'
-  gem 'rails_real_favicon'
+  gem 'rails_real_favicon', '~> 0.1.1'
   gem 'thin', '~> 1.8.1'
-  gem 'yaml_db'
+  gem 'yaml_db', '~> 0.7.0'
 end
 
 group :development, :test do
   gem 'ci_reporter'
   gem 'ci_reporter_rspec'
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails', '5.2.0'
   gem 'faker', '~> 2.19.0'
   gem 'jasmine'
   gem 'phantomjs'
@@ -74,7 +79,7 @@ group :test do
   gem 'database_cleaner'
   gem 'jasmine_junitxml_formatter'
   gem 'ladle'
-  gem 'memory_test_fix', '~> 1.5.1'
+  # gem 'memory_test_fix', '~> 1.5.1'
   gem 'poltergeist'
   gem 'rails-controller-testing'
   gem 'selenium-webdriver'

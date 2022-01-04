@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-ruby '2.6.3'
+ruby '2.7.5'
 require 'yaml'
 
 features = YAML.load_file(File.expand_path('../config/features.yml', __FILE__))

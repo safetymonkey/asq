@@ -13,8 +13,8 @@ Dependencies
 
 Asq is a Ruby on Rails application with the following pre-requisites:
 
--   Ruby 2.3.3 + the 'bundler' gem
--   Rails 5.0.1
+-   Ruby 2.7.5 + the 'bundler' gem
+-   Rails 5.2.6
 -   Postgres 9
 
 Getting Started

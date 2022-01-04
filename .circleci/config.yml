@@ -39,7 +39,6 @@ jobs:
             fi
 
             sudo chmod ugo+x /usr/local/bin/phantomjs
-            export OPENSSL_CONF=/dev/null
       - run:
           name: install dependencies
           command: |
@@ -52,4 +51,5 @@ jobs:
       - run:
           name: Run rspec in parallel
           command: |
+            export OPENSSL_CONF=/dev/null
             rspec

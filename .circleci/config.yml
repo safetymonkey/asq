@@ -29,7 +29,7 @@ jobs:
             cd /opt/oracle/instantclient_12_1 && sudo ln -s libclntsh.so.12.1 libclntsh.so
             sudo mkdir /site
             sudo chmod 777 /site
-      # TODO: Look at eiter caching phantomjs so we don't download it every time
+      # TODO: Look at caching phantomjs so we don't download it every time
       # Alternately, we should just build a Docker image w/ a stable build env.
       - run:
           name: Install phantomjs
@@ -39,11 +39,6 @@ jobs:
             fi
 
             sudo chmod ugo+x /usr/local/bin/phantomjs
-      - run:
-          name: install dependencies
-          command: |
-            gem update --system
-            gem install bundler
       - run:
           name: Bundle Install
           command: bundle check || bundle install

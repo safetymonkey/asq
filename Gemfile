@@ -9,10 +9,10 @@ gem 'mysql2', '~> 0.4.5' if features['mysql_db']
 
 gem 'devise_ldap_authenticatable', '~> 0.8.5'
 
-gem "actionpack", "5.2.6"
-gem "activerecord", "5.2.6"
-gem "activesupport", "5.2.6"
-gem "railties", "5.2.6"
+gem "actionpack", "5.2.6.2"
+gem "activerecord", "5.2.6.2"
+gem "activesupport", "5.2.6.2"
+gem "railties", "5.2.6.2"
 
 gem 'acts-as-taggable-on', '~> 5.0.0'
 gem 'autoprefixer-rails', '~> 8.2.0'
@@ -39,7 +39,7 @@ gem 'oj_mimic_json'
 gem 'paper_trail', '~> 12.1.0'
 gem 'pg', '~> 1.2.3'
 gem 'puma', '~> 5.6.2'
-gem 'rails', '5.2.6'
+gem 'rails', '5.2.6.2'
 gem 'redcarpet', '~> 3.5.1'
 gem 'responders', '~> 2.4.0'
 gem 'rest-client', '~> 2.0.2'
